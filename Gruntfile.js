@@ -4,7 +4,7 @@ module.exports = function(grunt) {
 
     var env = grunt.option('env') || "dev";
 
-    console.log(" ");
+    console.log(env);
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -34,7 +34,7 @@ module.exports = function(grunt) {
                     expand: true,
                     cwd: 'src/css/scss',
                     src: ['*.scss', '**/*.scss'],
-                    dest: 'dist/css',
+                    dest: 'dist/css/',
                     ext: '.min.css'
                 }]
             }
@@ -46,7 +46,7 @@ module.exports = function(grunt) {
                 map: true
             },
             default: {
-                src: 'dist/css/style.min.css'
+                src: 'dist/css/main.min.css'
             }           
         },
 
@@ -56,7 +56,10 @@ module.exports = function(grunt) {
             },
             hacks: {
                 files: [{
-                    src: ['src/app/*.js', 'src/app/**/*.js'],
+                    src: ['bower_components/angular/angular.min.js', 'bower_components/angular-*/angular-*.min.js'],
+                    dest: 'dist/js/vendors.min.js'
+                },{
+                    src: ['src/app/config_'+ env +'.js', 'src/app/app.js', 'src/app/services.js', 'src/app/controllers/top100.js'],
                     dest: 'dist/js/app.js'
                 }]
             }
@@ -107,7 +110,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-browser-sync');
 
     grunt.registerTask('html', ['copy']);
-    grunt.registerTask('css', ['sass']);
+    grunt.registerTask('css', ['sass', 'autoprefixer']);
     grunt.registerTask('js', ['concat']);
 
     grunt.registerTask('publish', ['clean', 'html', 'css', 'js']);

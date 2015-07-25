@@ -1,0 +1,17 @@
+<div class="partnerListing" ng-controller="PartnerListingCtrl">
+	<div filters-universes id="filters" ng-show="filterState" class="ng-hide-animate"></div>
+	<div ng-if="!pagesNum" class="partnerListing__noresults">No results found for those filters</div>
+	<div ng-if="pagesNum > 0" class="partnerListing__items" style="width:{{(pageWidth * pagesNum + 40)}}px;left:{{offsetLeft}}px;" ng-swipe-left="to('left')" ng-swipe-right="to('right')">
+		<ul class="partnerListing__page" ng-repeat="(pageIndex, pageItems) in pagedItems" style="width:{{pageWidth}}px">
+			<li class="partnerListing__item" ng-repeat="(index, item) in pageItems"><a href ng-click="go('/universes/'+ item.partnerId)">
+				<img ng-src="{{getImage(item.introductionvisual, {device:'medium',screen:'large'})}}" alt="" />
+				<span class="partnerListing__label">{{item.introductionLabel}}</span>
+			</a></li>
+		</ul>
+	</div>
+	<div class="pager pager--light">
+		<ul class="pager__items" ng-if="pagedItems.length > 1" id="pager">
+			<li class="pager__item" ng-repeat="(pageIndex, pageItems) in pagedItems" ng-class="(pageIndex == currentPage - 1) ? 'is-active': ''"><a href ng-click="to(pageIndex)"></a></li>
+		</ul>
+	</div>
+</div>

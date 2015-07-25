@@ -1,0 +1,109 @@
+<div ng-controller="WatchDetailsCtrl">
+	<div class="watchDetails">
+		<div class="watchDetails__fixed watchOverview" ng-if="context=='screen'">
+			<div class="watchDetails__description">
+				<h1 class="heading heading--1" ng-bind-html="watch.collectionLabel"></h1>
+				<div class="watchOverview__master" ng-bind-html="watch.label"></div>
+				<span class="watchOverview__ref">Ref : {{watch.reference}}</span>
+			</div>
+			<div class="watchOverview__imageContainer">
+				<div class="watchOverview__image">
+					<img ng-src="{{getImage(watch.image, {screen:'large'})}}" alt="" />
+				</div>
+			</div>
+		</div>
+
+		<div class="watchDetails__items" style="width:{{(pageWidth * pagesNum)}}px;left:{{offsetLeft}}px;" ng-swipe-left="to('left')" ng-swipe-right="to('right')">
+			<div class="watchDetails__item watchOverview" ng-if="context=='device'">
+				<div class="watchDetails__description">
+					<h1 class="heading heading--1 heading--firstline" ng-bind-html="watch.collectionLabel"></h1>
+					<div class="watchOverview__master" ng-bind-html="watch.label"></div>
+					<div class="watchOverview__specs">
+						<span class="watchOverview__spec"><strong>Case :</strong> {{watch.case}}</span>
+						<span class="watchOverview__spec"><strong>Bezel :</strong> {{watch.bezel}}</span>
+						<span class="watchOverview__spec"><strong>Dial :</strong> {{watch.dial}}</span>
+						<span class="watchOverview__spec"><strong>Strap :</strong> {{watch.strap}}</span>
+					</div>
+					<span class="watchOverview__ref">Ref : {{watch.reference}}</span>
+				</div>
+				<div class="watchOverview__imageContainer">
+					<div class="watchOverview__image">
+						<img ng-src="{{getImage(watch.image, {device:'medium'})}}" alt="" />
+					</div>
+				</div>
+			</div>
+
+			<div class="watchDetails__item watchTraveling" ng-if="context=='screen'">
+				<div class="watchTraveling__image">
+					<img ng-src="{{getImage(watch.image, {})}}" id="watchTraveling" alt="" />
+				</div>
+			</div>
+
+			<div class="watchDetails__item watch360" ng-if="watch.visual360.length">
+				<div class="watchDetails__description">
+					<h1 class="heading heading--1 heading--firstline" ng-bind-html="watch.collectionLabel"></h1>
+				</div>
+				<div class="watch360__scene" ng-controller="Watch360Ctrl">
+					<img ng-src="{{getImage(watch.visual360[index], {device:'medium', screen:'large'})}}" ng-repeat="(index, image) in watch.visual360" ng-class="(index == currentImage) ? 'is-active': ''" alt="" />
+					<a href class="watch360__cursor js-360-cursor"></a>
+				</div>
+			</div>
+
+			<div class="watchDetails__item watchMoreDetails">
+				<div class="watchDetails__description">
+					<h1 class="heading heading--1 heading--firstline" ng-bind-html="watch.collectionLabel"></h1>
+				</div>
+				<div class="watchMoreDetails__content js-scroller">
+					<h2 class="heading heading--2">More details</h2>
+					<p class="paragraph" ng-if="watch.productDescription" ng-bind-html="watch.productDescription"></p>
+					<div ng-repeat="(index, feature) in watch.features">
+						<h2 class="heading heading--3">{{feature.title}}</h2>
+						<p class="paragraph" ng-bind-html="feature.description"></p>
+					</div>
+				</div>
+			</div>
+
+			<div class="watchDetails__item watchMovement">
+				<div class="watchDetails__description">
+					<h1 class="heading heading--1 heading--firstline" ng-bind-html="watch.collectionLabel"></h1>
+				</div>
+				<div class="watchMovement__visual" style="background-image:url({{getImage(watch.movementDetails.mainpicture, {})}})"></div>
+				<div class="watchMovement__content js-scroller">
+					<div class="watchMovement__col">
+						<h2 class="heading heading--3">Description</h2>
+						<p class="paragraph" ng-bind-html="watch.movementDetails.description"></p>
+						<h2 class="heading heading--3">Performance</h2>
+						<p class="paragraph"ng-bind-html="watch.movementDetails.performance"></p>
+					</div>
+					<div class="watchMovement__col">
+						<h2 class="heading heading--3">Display</h2>
+						<p class="paragraph" ng-bind-html="watch.movementDetails.display"></p>
+						<h2 class="heading heading--3">Decoration</h2>
+						<p class="paragraph" ng-bind-html="watch.movementDetails.decoration"></p>
+					</div>
+				</div>
+			</div>
+
+			<div class="watchDetails__item watchOtherTimepieces" ng-if="watch.variants.length > 1">
+				<div class="watchDetails__description">
+					<h1 class="heading heading--1 heading--firstline" ng-bind-html="watch.collectionLabel"></h1>
+				</div>
+				<div class="variantListing" ng-controller="VariantListingCtrl">
+					<a href ng-click="to('right')" class="button variantListing__arrow variantListing__arrow--left" ng-class="(currentItem <= 1) ? 'is-disabled' : ''"></a>
+					<a href ng-click="to('left')" class="button variantListing__arrow variantListing__arrow--right" ng-class="(currentItem >= itemsNum - 2) ? 'is-disabled' : ''"></a>
+					<ul class="variantListing__items" style="width:{{(itemWidth * itemsNum)}}px;left:{{offsetLeft}}px;">
+						<li class="variantListing__item" ng-repeat="(index, item) in variants" ng-class="(itemsActived.indexOf(index) == -1) ? 'is-disabled' : '';">
+							<a href ng-click="go('/timepiece/'+ item.reference)"><img ng-src="{{getImage(item.image, {device:'medium',screen:'large'})}}" alt="" /></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="pager">
+			<ul class="pager__items" id="pager">
+				<li class="pager__item" ng-repeat="(index, item) in pagerItems" ng-class="(currentPage == index + 1) ? 'is-active': ''" page="details-{{item.id}}"><a href ng-click="to(index)"><span class="pager__label">{{item.label}}</span></a></li>
+			</ul>
+		</div>
+	</div>
+</div>

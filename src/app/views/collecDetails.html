@@ -1,0 +1,43 @@
+<div ng-controller="CollecDetailsCtrl">
+	<div class="pageDetails">
+
+		<div class="pageDetails__items" style="width:{{(pageWidth * pagesNum)}}px;left:{{offsetLeft}}px;" ng-swipe-left="to('left')" ng-swipe-right="to('right')">
+			<div class="pageDetails__item">
+				<div class="pageDetails__valigner" style="height:{{windowHeight - barsHeight}}px"></div>
+				<div class="pageDetails__text">
+					<h1 class="heading heading--1 heading--lastline" ng-bind-html="collec.label"></h1>
+					<p class="paragraph" ng-bind-html="collec.longlabel"></p>
+					<a href ng-click="go('/collections/'+ collec.id +'/timepieces/'+ collec.collecIds)" ng-if="context == 'device'" class="button">All collection timepieces</a>
+				</div>
+				<div class="pageDetails__media">
+					<img ng-src="{{getImage(collec.image, {device:'medium',screen:'large'})}}" alt="" />
+				</div>
+			</div>
+			<div class="pageDetails__item" ng-repeat="(index, page) in collec.pages">
+				<div class="pageDetails__text">
+					<h1 class="heading heading--1 heading--lastline" ng-bind-html="page.label"></h1>
+					<div class="pageDetails__paragraphs js-scroller">
+						<p class="paragraph" ng-bind-html="page.description"></p>
+					</div>
+				</div>
+				<div class="pageDetails__media">
+					<div ng-if="!page.video">
+						<img ng-src="{{getImage(page.image, {device:'medium',screen:'large'})}}" alt="" />
+					</div>
+					<div ng-if="page.video">
+						<a href ng-click="play('collecVideo_'+ index, page.video)"><img ng-src="{{getImage(page.image, {device:'medium',screen:'large'})}}" alt="" /></a>
+						<div class="pageDetails__video" id="collecVideo_{{index}}"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="pager pager--light" ng-if="collec.pages.length > 0">
+			<ul class="pager__items">
+				<li class="pager__item" ng-class="(currentPage == 1) ? 'is-active': ''"><a href ng-click="to(0)"></a></li>
+				<li class="pager__item" ng-repeat="(index, page) in collec.pages" ng-class="(currentPage == index + 2) ? 'is-active': ''"><a href ng-click="to(index + 1)"></a></li>
+			</ul>
+		</div>
+
+	</div>
+</div>

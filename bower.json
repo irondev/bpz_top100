@@ -1,0 +1,12 @@
+{
+  "name": "BPZ_TOP100",
+  "private": true,
+  "dependencies": {
+    "angular": "1.4.x",
+    "angular-route": "1.4.x",
+    "angular-sanitize": "1.4.x",
+    "angular-touch": "1.4.x"
+  },
+  "devDependencies": {
+  }
+}

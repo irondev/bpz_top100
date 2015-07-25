@@ -1,0 +1,10 @@
+                <a href ng-click="!navState ? navState='is-navigating' : navState=''" class="burger">Menu</a>
+                <a href ng-click="go('/')"><img src="./img/logo.png" class="logo" alt="TAG HEUER" /></a>
+	            <a href ng-click="!filterState ? filterState='is-filtering' : filterState=''" class="menu menu--filters" ng-show="hasFilters">
+	            	<div class="filters">
+		            	<span class="filters__caption">Filters<span ng-show="!dspFilters.length"> none</span></span>
+		            	<ul class="filters__labels" ng-show="dspFilters.length">
+		            		<li class="filters__label" ng-repeat="filter in dspFilters" ng-bind-html="filter.label"></li>
+		            	</ul>
+		            </div>
+	            </a>

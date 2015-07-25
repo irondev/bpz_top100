@@ -1,0 +1,72 @@
+<div ng-controller="PartnerDetailsCtrl">
+	<div class="pageDetails">
+
+		<div class="pageDetails__items" style="width:{{(pageWidth * pagesNum)}}px;left:{{offsetLeft}}px;" ng-swipe-left="to('left')" ng-swipe-right="to('right')">
+			<div class="pageDetails__item">
+				<div class="pageDetails__valigner" style="height:{{windowHeight - barsHeight}}px"></div>
+				<div class="pageDetails__text">
+					<h1 class="heading heading--1 heading--lastline" ng-bind-html="partner.introductionLabel"></h1>
+					<p class="paragraph" ng-bind-html="partner.introductionSubLabel"></p>
+				</div>
+				<div class="pageDetails__media">
+					<img ng-src="{{getImage(partner.introductionvisual, {device:'medium',screen:'large'})}}" alt="" />
+				</div>
+			</div>
+			<div class="pageDetails__item">
+				<div class="pageDetails__text">
+					<h1 class="heading heading--1 heading--lastline" ng-bind-html="partner.inspirationtitle"></h1>
+					<div class="pageDetails__paragraphs js-scroller">
+						<p class="paragraph" ng-bind-html="partner.inspiratiosubtitle1"></p>
+						<p class="paragraph" ng-bind-html="partner.inspirationtext1"></p>
+					</div>
+				</div>
+				<div class="pageDetails__media pageDetails__media--superpos">
+					<img ng-src="{{getImage(partner.inspirationvisual1, {device:'medium',screen:'large'})}}" alt="" />
+					<img ng-src="{{getImage(partner.inspirationvisual1, {device:'medium',screen:'large'})}}" alt="" />
+					<img ng-src="{{getImage(partner.inspirationvisual2, {device:'medium',screen:'large'})}}" alt="" />
+					<p class="paragraph" ng-if="context == 'screen'" ng-bind-html="partner.inspirationtext2"></p>
+				</div>
+			</div>
+			<div class="pageDetails__item">
+				<div class="pageDetails__text">
+					<h1 class="heading heading--1 heading--lastline" ng-bind-html="partner.biotitle"></h1>
+					<div class="pageDetails__paragraphs paragraph js-scroller">
+						<p ng-bind-html="partner.biosubtitle"></p>
+						<p ng-bind-html="partner.biosummary"></p>
+					</div>
+				</div>
+				<div class="pageDetails__media">
+					<a href ng-click="play('partnerVideo', partner.media[0].video.youtubeCode)"><!--<img ng-src="{{getImage(partner.media[0].visualthumb, {device:'medium',screen:'large'})}}" alt="" />--><img ng-src="{{getImage(partner.introductionvisual, {device:'medium',screen:'large'})}}" alt="" /></a>
+					<div class="pageDetails__video" id="partnerVideo"></div>
+					<span class="pageDetails__mediaTitle">{{partner.media[0].label}}</span>
+				</div>
+			</div>
+			<div class="pageDetails__item pageDetails__item--variants">
+				<div class="pageDetails__text">
+					<h1 class="heading heading--1 heading--lastline">{{partner.watchestitle}}</h1>
+				</div>
+				<div class="variantListing variantListing--fixed">
+					<ul class="variantListing__items">
+						<li class="variantListing__item" ng-repeat="(index, item) in partner.watches" ng-class="(itemsActived.indexOf(index) == -1) ? 'is-disabled' : '';">
+							<a href ng-click="go('/timepiece/'+ item.reference)"><img ng-src="{{item.image.medium}}" alt="" /></a>
+							<div class="variantListing__text">
+								<span class="heading heading--2">{{item.collectionLabel | noTagHeuer}}</span>
+								<p class="paragraph" ng-bind-html="item.label"></p>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="pager pager--light">
+			<ul class="pager__items">
+				<li class="pager__item" ng-class="(currentPage == 1) ? 'is-active': ''"><a href ng-click="to(0)"></a></li>
+				<li class="pager__item" ng-class="(currentPage == 2) ? 'is-active': ''"><a href ng-click="to(1)"></a></li>
+				<li class="pager__item" ng-class="(currentPage == 3) ? 'is-active': ''"><a href ng-click="to(2)"></a></li>
+				<li class="pager__item" ng-class="(currentPage == 4) ? 'is-active': ''"><a href ng-click="to(3)"></a></li>
+			</ul>
+		</div>
+
+	</div>
+</div>

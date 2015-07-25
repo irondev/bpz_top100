@@ -1,0 +1,19 @@
+                <div class="homeListing" ng-controller="HomeCtrl">
+	                <ul class="homeListing__items">
+	                	<li class="homeListing__item" ng-repeat="(index, item) in navItems" style="width:{{(100 / navItems.length)}}%;background-image:url({{getImage(item.image, {device:'medium',screen:'large'})}});">
+			                <a ng-if="!item.children.length" href ng-click="go('/'+ item.id)" class="homeListing__label">
+								{{item.label}}
+			                </a>
+			                <div ng-if="item.children.length">
+				                <a ng-hide="isActiveChild(index)" href ng-click="toggleChild(index)" class="homeListing__label">
+									{{item.label}}
+								</a>
+								<div>
+									<a ng-show="isActiveChild(index)" ng-repeat="child in item.children" href ng-click="go('/'+ item.id + '/'+ child.id)" class="homeListing__label homeListing__label--child ng-hide-animate">
+										{{child.label}}
+									</a>
+								</div>
+							</div>
+	                	</li>
+	                </ul>
+	            </div>

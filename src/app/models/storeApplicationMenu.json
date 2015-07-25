@@ -1,0 +1,33 @@
+[
+  {
+    "id": "universes",
+    "label": "Discover the universe",
+    "image": "/uploads/syssectiontranslation/en/7df17ce37c324a40a7e30be1ce403a29d38262c5.jpg",
+    "children": []
+  },
+  {
+    "id": "catalogue",
+    "label": "Explore the catalogue",
+    "image": "/uploads/syssectiontranslation/en/38e8ea5717b8e72985c3068b0649062eb0f1993a.jpg",
+    "children": [
+      {
+        "id": "men",
+        "label": "Men",
+        "image": null,
+        "children": []
+      },
+      {
+        "id": "women",
+        "label": "Women",
+        "image": null,
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "collections",
+    "label": "Explore the collections",
+    "image": "/uploads/syssectiontranslation/en/d64bed208072e4f9c4a7a621d89c9fa06155450c.jpg",
+    "children": []
+  }
+]

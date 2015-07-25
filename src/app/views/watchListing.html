@@ -1,0 +1,35 @@
+<div class="watchListing" ng-controller="WatchListingCtrl">
+	<div filters-watches id="filters" ng-show="filterState" class="ng-hide-animate"></div>
+	<div ng-if="!pagesNum" class="watchListing__noresults">No results found for those filters</div>
+	<div ng-if="pagesNum > 0" class="watchListing__items" style="width:{{(pageWidth * pagesNum)}}px;left:{{offsetLeft}}px;" ng-swipe-left="to('left')" ng-swipe-right="to('right')">
+		<ul class="watchListing__page" ng-repeat="(pageIndex, pageItems) in pagedItems" style="width:{{pageWidth}}px">
+			<li class="watchListing__item" ng-repeat="(index, item) in pageItems">
+				<a href ng-click="setPreview(item)">
+					<img ng-src="{{getImage(item.image, {device:'medium',screen:'large'})}}" ng-if="pageIndex <= currentPage && ((pageIndex%2 == 0 && index%18 == 0) || (pageIndex%2 == 1 && index%18 == 7))" alt="" />
+					<img ng-src="{{getImage(item.image, {device:'small',screen:'medium'})}}" ng-if="pageIndex <= currentPage && !((pageIndex%2 == 0 && index%18 == 0) || (pageIndex%2 == 1 && index%18 == 7))" alt="" />
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div class="pager pager--light">
+		<ul class="pager__items" ng-if="pagedItems.length > 1" id="pager">
+			<li class="pager__item" ng-repeat="(pageIndex, pageItems) in pagedItems" ng-class="(pageIndex == currentPage - 1) ? 'is-active': ''"><a href ng-click="to(pageIndex)"></a></li>
+		</ul>
+	</div>
+</div>
+<script type="text/ng-template" id="/preview.html">
+	<a href ng-click="unsetPreview()" class="popin__close"></a>
+	<div class="popin__content">
+		<div class="popin__image">
+			<img ng-src="{{getImage(previewItem.image, {device:'small',screen:'medium'})}}" alt="" />
+		</div>
+		<div class="popin__text">
+			<h1 class="popin__title" ng-bind-html="previewItem.collectionLabel"></h1>
+			<p class="popin__details" ng-bind-html="previewItem.label"></p>
+		</div>
+		<div class="popin__button">
+			<a href ng-click="go('/timepiece/'+ previewItem.reference)" class="button button--submit">Discover</a>
+		</div>
+	</div>
+</script>
+<div class="popin popin--preview" ng-include src="previewTpl"></div>

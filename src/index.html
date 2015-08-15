@@ -11,68 +11,84 @@
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
         <link href="css/style.min.css" rel="stylesheet" type="text/css">
     </head>
-    <body>
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+    <body 
+        ng-class="{'is-navigating': isNavigating}">
 
-        <header class="header"
-            ng-class="{'is-reduced': documentScroll > 0}">
-            <a href="/" class="header__logo"></a>
-        </header>
+        <nav class="nav">
+            nav
+        </nav>
 
-        <section class="cover"
-            ng-style="{'max-height':documentHeight + 'px'}">
-            <img ng-src="{{infos.meta.coverimage.url}}" class="cover__image" />
-            <div class="cover__text">
-                <h1 class="cover__title">{{infos.meta.covertitle}}</h1>
-            </div>
-        </section>
+        <div class="container">
 
-        <div id="container">
+            <header class="header"
+                ng-class="{'is-reduced': documentScroll > 0}">
+                <a href class="header__burger"
+                    ng-click="toggleNav()"></a>
+                <a href class="header__logo"
+                    ng-click="toggleNav()"></a>
+            </header>
 
-            <section class="intro">
-                <div class="overheading"><span class="overheading__label">{{infos.meta.surtitre}}</span></div>
-                <h2 class="heading heading--1">{{infos.meta.h2subtitle}}</h2>
-                <p class="paragraph"
-                    ng-bind-html="infos.content"></p>
+            <!--[if lt IE 8]>
+                <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+            <![endif]-->
+
+            <section class="cover"
+                ng-style="{'max-height':documentHeight + 'px'}">
+                <img ng-src="{{infos.meta.coverimage.url}}" class="cover__image" />
+                <div class="cover__text">
+                    <h1 class="cover__title">{{infos.meta.covertitle}}</h1>
+                </div>
             </section>
 
-            <nav class="nav">
-                <a href class="nav__item button"
-                    ng-class="{'is-active': groupBy == 'meta.albumrankcat'}"
-                    ng-click="groupBy = 'meta.albumrankcat'">{{infos.meta.filtre_classement}}</a>
-                <a href class="nav__item button"
-                    ng-class="{'is-active': groupBy == 'meta.albumyearcat'}"
-                    ng-click="groupBy = 'meta.albumyearcat'">{{infos.meta.filtre_date}}</a>
-                <a href class="nav__item button"
-                    ng-class="{'is-active': groupBy == 'meta.albumstylecat'}"
-                    ng-click="groupBy = 'meta.albumstylecat'">{{infos.meta.filtre_style}}</a>
-            </nav>
+            <div class="layout">
 
-            <section class="albums">
-                <ul class="albums__cat"
-                    ng-repeat="(key, cat) in albums | groupBy: groupBy | toArray:true | orderBy:orderGroup">
-                    <div class="albums__caption">
-                        <span class="albums__captionLabel">{{cat.$key}}</span>
-                    </div>
-                    <li class="albums__item album"
-                        ng-repeat="(index, album) in cat | orderBy: meta.albumrank">
-                        <img class="album__cover" ng-src="{{album.meta.albumcover.url}}" alt="{{album.title}}" />
-                        <span class="album__rank">{{album.meta.albumrank}}</span>
-                        <div class="album__infos">
-                            <span class="album__title"
-                                ng-bind-html="album.title"></span>
+                <section class="intro">
+                    <div class="overheading"><span class="overheading__label">{{infos.meta.surtitre}}</span></div>
+                    <h2 class="heading heading--1">{{infos.meta.h2subtitle}}</h2>
+                    <p class="paragraph"
+                        ng-bind-html="infos.content"></p>
+                </section>
+
+                <section class="filters">
+                    <a href class="filters__item button"
+                        ng-class="{'is-active': groupBy == 'meta.albumrankcat'}"
+                        ng-click="groupBy = 'meta.albumrankcat'">{{infos.meta.filtre_classement}}</a>
+                    <a href class="filters__item button"
+                        ng-class="{'is-active': groupBy == 'meta.albumyearcat'}"
+                        ng-click="groupBy = 'meta.albumyearcat'">{{infos.meta.filtre_date}}</a>
+                    <a href class="filters__item button"
+                        ng-class="{'is-active': groupBy == 'meta.albumstylecat'}"
+                        ng-click="groupBy = 'meta.albumstylecat'">{{infos.meta.filtre_style}}</a>
+                </section>
+
+                <section class="albums">
+                    <ul class="albums__cat"
+                        ng-repeat="(key, cat) in albums | groupBy: groupBy | toArray:true | orderBy:orderGroup">
+                        <div class="albums__caption">
+                            <span class="albums__captionLabel">{{cat.$key}}</span>
                         </div>
-                    </li>
-                </ul>
+                        <li class="albums__item album"
+                            ng-repeat="(index, album) in cat | orderBy: meta.albumrank">
+                            <img class="album__cover" ng-src="{{album.meta.albumcover.url}}" alt="{{album.title}}" />
+                            <span class="album__rank">{{album.meta.albumrank}}</span>
+                            <div class="album__infos">
+                                <span class="album__title"
+                                    ng-bind-html="album.title"></span>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+
+                <footer class="footer"
+                    ng-include="config.incPath + 'footer.html'"></footer>
+
+            </div>
+
+            <section class="player"
+                ng-class="{'is-active': documentScroll > documentHeight}">
             </section>
 
         </div>
-
-        <section class="player"
-            ng-class="{'is-active': documentScroll > documentHeight}">
-        </section>
 
         <script src="js/vendors.min.js"></script>
         <script src="js/app.js"></script>

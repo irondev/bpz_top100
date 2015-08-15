@@ -1,0 +1,256 @@
+[{
+    "ID": 4,
+    "name": "CHRONIQUES",
+    "slug": "chroniques",
+    "description": "",
+    "taxonomy": "category",
+    "parent": null,
+    "count": 41,
+    "link": "http:\/\/thebackpackerz.com\/category\/chroniques\/",
+    "meta": {
+        "links": {
+            "collection": "http:\/\/thebackpackerz.com\/wp-json\/taxonomies\/category\/terms",
+            "self": "http:\/\/thebackpackerz.com\/wp-json\/taxonomies\/category\/terms\/4"
+        }
+    }
+}, {
+    "ID": 159,
+    "name": "Cin\u00e9ma",
+    "slug": "cinema",
+    "description": "",
+    "taxonomy": "category",
+    "parent": null,
+    "count": 10,
+    "link": "http:\/\/thebackpackerz.com\/category\/cinema\/",
+    "meta": {
+        "links": {
+            "collection": "http:\/\/thebackpackerz.com\/wp-json\/taxonomies\/category\/terms",
+            "self": "http:\/\/thebackpackerz.com\/wp-json\/taxonomies\/category\/terms\/133"
+        }
+    }
+}, {
+    "ID": 685,
+    "name": "Danse",
+    "slug": "danse",
+    "description": "",
+    "taxonomy": "category",
+    "parent": null,
+    "count": 3,
+    "link": "http:\/\/thebackpackerz.com\/category\/danse\/",
+    "meta": {
+        "links": {
+            "collection": "http:\/\/thebackpackerz.com\/wp-json\/taxonomies\/category\/terms",
+            "self": "http:\/\/thebackpackerz.com\/wp-json\/taxonomies\/category\/terms\/682"
+        }
+    }
+}, {
+    "ID": 808,
+    "name": "D\u00e9couvertes",
+    "slug": "decouvertes",
+    "description": "",
+    "taxonomy": "category",
+    "parent": null,
+    "count": 18,
+    "link": "http:\/\/thebackpackerz.com\/category\/decouvertes\/",
+    "meta": {
+        "links": {
+            "collection": "http:\/\/thebackpackerz.com\/wp-json\/taxonomies\/category\/terms",
+            "self": "http:\/\/thebackpackerz.com\/wp-json\/taxonomies\/category\/terms\/801"
+        }
+    }
+}, {
+    "ID": 779,
+    "name": "DIGGING",
+    "slug": "sons",
+    "description": "",
+    "taxonomy": "category",
+    "parent": null,
+    "count": 100,
+    "link": "http:\/\/thebackpackerz.com\/category\/sons\/",
+    "meta": {
+        "links": {
+            "collection": "http:\/\/thebackpackerz.com\/wp-json\/taxonomies\/category\/terms",
+            "self": "http:\/\/thebackpackerz.com\/wp-json\/taxonomies\/category\/terms\/775"
+        }
+    }
+}, {
+    "ID": 30,
+    "name": "DOSSIERS",
+    "slug": "dossier",
+    "description": "",
+    "taxonomy": "category",
+    "parent": null,
+    "count": 37,
+    "link": "http:\/\/thebackpackerz.com\/category\/dossier\/",
+    "meta": {
+        "links": {
+            "collection": "http:\/\/thebackpackerz.com\/wp-json\/taxonomies\/category\/terms",
+            "self": "http:\/\/thebackpackerz.com\/wp-json\/taxonomies\/category\/terms\/29"
+        }
+    }
+}, {
+    "ID": 113,
+    "name": "EVENTS",
+    "slug": "events",
+    "description": "",
+    "taxonomy": "category",
+    "parent": null,
+    "count": 90,
+    "link": "http:\/\/thebackpackerz.com\/category\/events\/",
+    "meta": {
+        "links": {
+            "collection": "http:\/\/thebackpackerz.com\/wp-json\/taxonomies\/category\/terms",
+            "self": "http:\/\/thebackpackerz.com\/wp-json\/taxonomies\/category\/terms\/112"
+        }
+    }
+}, {
+    "ID": 626,
+    "name": "Focus",
+    "slug": "focus",
+    "description": "",
+    "taxonomy": "category",
+    "parent": null,
+    "count": 11,
+    "link": "http:\/\/thebackpackerz.com\/category\/focus\/",
+    "meta": {
+        "links": {
+            "collection": "http:\/\/thebackpackerz.com\/wp-json\/taxonomies\/category\/terms",
+            "self": "http:\/\/thebackpackerz.com\/wp-json\/taxonomies\/category\/terms\/623"
+        }
+    }
+}, {
+    "ID": 7,
+    "name": "INTERVIEWS",
+    "slug": "interviews",
+    "description": "",
+    "taxonomy": "category",
+    "parent": null,
+    "count": 36,
+    "link": "http:\/\/thebackpackerz.com\/category\/interviews\/",
+    "meta": {
+        "links": {
+            "collection": "http:\/\/thebackpackerz.com\/wp-json\/taxonomies\/category\/terms",
+            "self": "http:\/\/thebackpackerz.com\/wp-json\/taxonomies\/category\/terms\/7"
+        }
+    }
+}, {
+    "ID": 780,
+    "name": "Livre",
+    "slug": "livre",
+    "description": "",
+    "taxonomy": "category",
+    "parent": null,
+    "count": 3,
+    "link": "http:\/\/thebackpackerz.com\/category\/livre\/",
+    "meta": {
+        "links": {
+            "collection": "http:\/\/thebackpackerz.com\/wp-json\/taxonomies\/category\/terms",
+            "self": "http:\/\/thebackpackerz.com\/wp-json\/taxonomies\/category\/terms\/776"
+        }
+    }
+}, {
+    "ID": 316,
+    "name": "Lost &amp; Found",
+    "slug": "lost-and-found",
+    "description": "",
+    "taxonomy": "category",
+    "parent": null,
+    "count": 21,
+    "link": "http:\/\/thebackpackerz.com\/category\/lost-and-found\/",
+    "meta": {
+        "links": {
+            "collection": "http:\/\/thebackpackerz.com\/wp-json\/taxonomies\/category\/terms",
+            "self": "http:\/\/thebackpackerz.com\/wp-json\/taxonomies\/category\/terms\/314"
+        }
+    }
+}, {
+    "ID": 2,
+    "name": "Mixes",
+    "slug": "mixes",
+    "description": "",
+    "taxonomy": "category",
+    "parent": null,
+    "count": 21,
+    "link": "http:\/\/thebackpackerz.com\/category\/mixes\/",
+    "meta": {
+        "links": {
+            "collection": "http:\/\/thebackpackerz.com\/wp-json\/taxonomies\/category\/terms",
+            "self": "http:\/\/thebackpackerz.com\/wp-json\/taxonomies\/category\/terms\/2"
+        }
+    }
+}, {
+    "ID": 5,
+    "name": "NEWS",
+    "slug": "news",
+    "description": "",
+    "taxonomy": "category",
+    "parent": null,
+    "count": 201,
+    "link": "http:\/\/thebackpackerz.com\/category\/news\/",
+    "meta": {
+        "links": {
+            "collection": "http:\/\/thebackpackerz.com\/wp-json\/taxonomies\/category\/terms",
+            "self": "http:\/\/thebackpackerz.com\/wp-json\/taxonomies\/category\/terms\/5"
+        }
+    }
+}, {
+    "ID": 1,
+    "name": "Non class\u00e9",
+    "slug": "non-classe",
+    "description": "",
+    "taxonomy": "category",
+    "parent": null,
+    "count": 4,
+    "link": "http:\/\/thebackpackerz.com\/category\/non-classe\/",
+    "meta": {
+        "links": {
+            "collection": "http:\/\/thebackpackerz.com\/wp-json\/taxonomies\/category\/terms",
+            "self": "http:\/\/thebackpackerz.com\/wp-json\/taxonomies\/category\/terms\/1"
+        }
+    }
+}, {
+    "ID": 606,
+    "name": "Non class\u00e9",
+    "slug": "non-classe-en",
+    "description": "",
+    "taxonomy": "category",
+    "parent": null,
+    "count": 0,
+    "link": "http:\/\/thebackpackerz.com\/category\/non-classe-en\/",
+    "meta": {
+        "links": {
+            "collection": "http:\/\/thebackpackerz.com\/wp-json\/taxonomies\/category\/terms",
+            "self": "http:\/\/thebackpackerz.com\/wp-json\/taxonomies\/category\/terms\/604"
+        }
+    }
+}, {
+    "ID": 346,
+    "name": "Playlists",
+    "slug": "playlists",
+    "description": "",
+    "taxonomy": "category",
+    "parent": null,
+    "count": 58,
+    "link": "http:\/\/thebackpackerz.com\/category\/playlists\/",
+    "meta": {
+        "links": {
+            "collection": "http:\/\/thebackpackerz.com\/wp-json\/taxonomies\/category\/terms",
+            "self": "http:\/\/thebackpackerz.com\/wp-json\/taxonomies\/category\/terms\/344"
+        }
+    }
+}, {
+    "ID": 49,
+    "name": "TOP 10",
+    "slug": "top10",
+    "description": "",
+    "taxonomy": "category",
+    "parent": null,
+    "count": 14,
+    "link": "http:\/\/thebackpackerz.com\/category\/top10\/",
+    "meta": {
+        "links": {
+            "collection": "http:\/\/thebackpackerz.com\/wp-json\/taxonomies\/category\/terms",
+            "self": "http:\/\/thebackpackerz.com\/wp-json\/taxonomies\/category\/terms\/48"
+        }
+    }
+}]

@@ -5,9 +5,9 @@
 	height:55px;
 	top:0;
 	left:0;
-    background:$color-dark;
+    background:rgba($color-dark, 0.9);
     text-align:center;
-    transition:height 0.25s;
+    transition:all 0.25s;
 
     @media (min-width:$bp-phone) {
         height:90px;
@@ -29,10 +29,15 @@
         width:100%;
         left:0;
         bottom:-3px;
-        background:linear-gradient(to bottom, rgba(0,0,0,0.5), transparent);
+        background:linear-gradient(to bottom, rgba(#000,0.5), transparent);
     }
 
     &.is-reduced {
+        height:55px;
+    }
+
+    body.is-navigating & {
+        background:rgba($color-dark, 1);
         height:55px;
     }
 }

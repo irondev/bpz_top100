@@ -1,6 +1,7 @@
 /* BASE */
 @import "base/config";
 @import "base/normalize";
+@import "base/body";
 @import "base/layout";
 
 /* VENDORS */
@@ -13,12 +14,14 @@
 @import "atoms/paragraph";
 
 /* MOLECULES */
+@import "molecules/intro";
 @import "molecules/album";
 
 /* ORGANISMS */
+@import "organisms/nav";
 @import "organisms/header";
 @import "organisms/cover";
-@import "organisms/intro";
-@import "organisms/nav";
+@import "organisms/filters";
 @import "organisms/albums";
+@import "organisms/footer";
 @import "organisms/player";

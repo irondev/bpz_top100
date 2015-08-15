@@ -6,7 +6,7 @@
 	left:0;
     bottom:-100%;
     transition:bottom 0.25s;
-    background:$color-dark;
+    background:rgba(#000, 0.9);
 
     &:before {
         display:block;
@@ -16,10 +16,14 @@
         width:100%;
         left:0;
         top:-3px;
-        background:linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+        background:linear-gradient(to top, rgba(#000,0.5), transparent);
     }
 
     &.is-active {
         bottom:0;
+    }
+
+    body.is-navigating & {
+        bottom:-100%;
     }
 }

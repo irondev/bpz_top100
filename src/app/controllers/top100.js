@@ -2,6 +2,8 @@
 
 	app.controller('Top100Ctrl', function($scope, $rootScope, $datas, $filter, $window) {
 
+		$scope.config = config;
+
 		$scope.documentHeight = documentHeight;
 		angular.element($window).bind('resize', function(e) {
 		    documentHeight = document.documentElement.clientHeight;
@@ -30,7 +32,6 @@
 			$scope.groupBy = 'meta.albumrankcat'
 
 		});
-
 		$scope.orderGroup = function(array) {
 			//console.log(array);
 			//console.log($scope.groupBy);
@@ -38,7 +39,12 @@
 			return $filter('orderBy')(array, function(arg) {
 				console.log(arg);
 			}, reverse);
-		}	
+		};	
+
+		$scope.isNavigating = false;
+		$scope.toggleNav = function() {
+			$scope.isNavigating = $scope.isNavigating ? false : true;
+		}
 
 	});
 

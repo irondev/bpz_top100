@@ -3,18 +3,76 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Top 100</title>
-        <meta name="description" content="">
+        <title ng-bind-html="infos.title">Top 100</title>
+        <meta name="description" content="{{infos.meta.covertitle}}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" type="image/x-icon" href="http://thebackpackerz.com/wp-content/uploads/2015/05/favicon-the-backpackerz-blog-hip-hop.gif" />
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
-        <link rel="stylesheet" href="css/main.min.css">
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+        <link href="css/style.min.css" rel="stylesheet" type="text/css">
     </head>
     <body>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <h1>Top 200</h1><h1>Top 200</h1><h1>Top 200</h1><h1>Top 200</h1><h1>Top 200</h1><h1>Top 200</h1><h1>Top 200</h1><h1>Top 200</h1><h1>Top 200</h1><h1>Top 200</h1><h1>Top 200</h1><h1>Top 200</h1><h1>Top 200</h1><h1>Top 200</h1><h1>Top 200</h1><h1>Top 200</h1><h1>Top 200</h1><h1>Top 200</h1><h1>Top 200</h1><h1>Top 200</h1><h1>Top 200</h1><h1>Top 200</h1><h1>Top 200</h1><h1>Top 200</h1><h1>Top 200</h1><h1>Top 200</h1><h1>Top 200</h1><h1>Top 200</h1><h1>Top 200</h1><h1>Top 200</h1><h1>Top 200</h1><h1>Top 200</h1><h1>Top 200</h1><h1>Top 200</h1>
+        <header class="header"
+            ng-class="{'is-reduced': documentScroll > 0}">
+            <a href="/" class="header__logo"></a>
+        </header>
+
+        <section class="cover"
+            ng-style="{'max-height':documentHeight + 'px'}">
+            <img ng-src="{{infos.meta.coverimage.url}}" class="cover__image" />
+            <div class="cover__text">
+                <h1 class="cover__title">{{infos.meta.covertitle}}</h1>
+            </div>
+        </section>
+
+        <div id="container">
+
+            <section class="intro">
+                <div class="overheading"><span class="overheading__label">{{infos.meta.surtitre}}</span></div>
+                <h2 class="heading heading--1">{{infos.meta.h2subtitle}}</h2>
+                <p class="paragraph"
+                    ng-bind-html="infos.content"></p>
+            </section>
+
+            <nav class="nav">
+                <a href class="nav__item button"
+                    ng-class="{'is-active': groupBy == 'meta.albumrankcat'}"
+                    ng-click="groupBy = 'meta.albumrankcat'">{{infos.meta.filtre_classement}}</a>
+                <a href class="nav__item button"
+                    ng-class="{'is-active': groupBy == 'meta.albumyearcat'}"
+                    ng-click="groupBy = 'meta.albumyearcat'">{{infos.meta.filtre_date}}</a>
+                <a href class="nav__item button"
+                    ng-class="{'is-active': groupBy == 'meta.albumstylecat'}"
+                    ng-click="groupBy = 'meta.albumstylecat'">{{infos.meta.filtre_style}}</a>
+            </nav>
+
+            <section class="albums">
+                <ul class="albums__cat"
+                    ng-repeat="(key, cat) in albums | groupBy: groupBy | toArray:true | orderBy:orderGroup">
+                    <div class="albums__caption">
+                        <span class="albums__captionLabel">{{cat.$key}}</span>
+                    </div>
+                    <li class="albums__item album"
+                        ng-repeat="(index, album) in cat | orderBy: meta.albumrank">
+                        <img class="album__cover" ng-src="{{album.meta.albumcover.url}}" alt="{{album.title}}" />
+                        <span class="album__rank">{{album.meta.albumrank}}</span>
+                        <div class="album__infos">
+                            <span class="album__title"
+                                ng-bind-html="album.title"></span>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+        </div>
+
+        <section class="player"
+            ng-class="{'is-active': documentScroll > documentHeight}">
+        </section>
 
         <script src="js/vendors.min.js"></script>
         <script src="js/app.js"></script>

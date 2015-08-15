@@ -1,3 +1,4 @@
 var config = {
-	apiUrl: '/app/models/top100.json'
+	infosApiUrl: '/app/models/infos.json',
+	albumsApiUrl: '/app/models/albums.json'
 };

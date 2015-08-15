@@ -1,0 +1,21 @@
+/* COLORS */
+$color-dark: #222421;
+$color-light: #ccc;
+$color-lighter: #e3e3e3;
+$color-red: #b22d2d;
+
+/* BREAK POINTS */
+$bp-min: 320px;
+$bp-phone: 480px;
+$bp-phablet: 640px;
+$bp-tablet: 768px;
+$bp-max: 1000px;
+
+/* SUSY */
+$susy: (
+	columns: 12,
+	gutters: 1/10,
+	math: fluid,
+	output: float,
+	gutter-position: split
+);

@@ -1,4 +1,6 @@
+.ftppass
 .sass-cache/
 node_modules/
 bower_components/
 dist/
+src/css/scss/vendors/

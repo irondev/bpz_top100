@@ -1,14 +1,22 @@
-app.service('datas', function($http) {
+app.service('$datas', function($http) {
 	var promise = {};
 
 	return {
-		getDatas: function(service) {
-			if (!promise[service]) {
-				promise[service] = $http.get(config.apiUrl).then(function(res) {
+		getInfos: function() {
+			if (!promise['infos']) {
+				promise['infos'] = $http.get(config.infosApiUrl).then(function(res) {
 					return res.data;
 				});
 			}
-			return promise[service];
+			return promise['infos'];
+		},
+		getAlbums: function() {
+			if (!promise['albums']) {
+				promise['albums'] = $http.get(config.albumsApiUrl).then(function(res) {
+					return res.data;
+				});
+			}
+			return promise['albums'];
 		}
 	};
 });

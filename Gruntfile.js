@@ -4,7 +4,7 @@ module.exports = function(grunt) {
 
     var env = grunt.option('env') || "dev";
 
-    console.log(env);
+    console.log(" ");
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -18,8 +18,14 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: 'src',
-                    src: ['**', '**/*'],
+                    src: ['**', '**/*', '!css/scss/**', '!css/scss/**/*'],
                     dest: 'dist'
+                },
+                {
+                    expand: true,
+                    cwd: 'bower_components/susy/sass',
+                    src: ['**', '**/*'],
+                    dest: 'src/css/scss/vendors/susy'
                 }]
             }
         },
@@ -43,10 +49,10 @@ module.exports = function(grunt) {
         autoprefixer: {
             options: {
                 diff: true,
-                map: true
+                map: false
             },
             default: {
-                src: 'dist/css/main.min.css'
+                src: 'dist/css/style.min.css'
             }           
         },
 
@@ -54,11 +60,12 @@ module.exports = function(grunt) {
             options: {
                 separator: ';'
             },
-            hacks: {
+            default: {
                 files: [{
-                    src: ['bower_components/angular/angular.min.js', 'bower_components/angular-*/angular-*.min.js'],
+                    src: ['bower_components/angular/angular.min.js', 'bower_components/angular-*/angular-*.min.js', 'bower_components/angular-*/**/angular-*.min.js'],
                     dest: 'dist/js/vendors.min.js'
-                },{
+                },
+                {
                     src: ['src/app/config_'+ env +'.js', 'src/app/app.js', 'src/app/services.js', 'src/app/controllers/top100.js'],
                     dest: 'dist/js/app.js'
                 }]
@@ -97,6 +104,19 @@ module.exports = function(grunt) {
                     server: './dist'
                 }
             }
+        },
+
+        'ftp-deploy': {
+            default: {
+                auth: {
+                    host: 'ftp.thebackpackerz.com',
+                    port: 21,
+                    authKey: env
+                },
+                src: 'dist/',
+                dest: 'www/special/rewind/',
+                forceVerbose: true
+            }
         }
 
     });
@@ -108,11 +128,13 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-browser-sync');
+    grunt.loadNpmTasks('grunt-ftp-deploy');
 
     grunt.registerTask('html', ['copy']);
     grunt.registerTask('css', ['sass', 'autoprefixer']);
     grunt.registerTask('js', ['concat']);
 
+    grunt.registerTask('deploy', ['publish', 'ftp-deploy']);
     grunt.registerTask('publish', ['clean', 'html', 'css', 'js']);
     grunt.registerTask('default', ['publish', 'browserSync', 'watch']);
 

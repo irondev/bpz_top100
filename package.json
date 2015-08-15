@@ -11,6 +11,7 @@
     "grunt-autoprefixer": "^1.0.1",
     "grunt-contrib-watch": "~0.6.1",
     "grunt-browser-sync": "^2.1.2",
+    "grunt-ftp-deploy": "^0.1.10",
     "bower": "^1.4.1"
   }
 }

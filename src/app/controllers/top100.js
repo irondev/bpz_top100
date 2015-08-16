@@ -13,35 +13,33 @@
 
 		$scope.documentScroll = documentScroll;
 		angular.element($window).bind('scroll', function(e) {
-		    documentScroll = window.pageYOffset;console.log(documentScroll);
+		    documentScroll = window.pageYOffset;
 		    $scope.documentScroll = documentScroll;
 		    $scope.$apply();
 		});
 
 		$datas.getInfos().then(function(datas) {
-			
 			console.log(datas);
 			$scope.infos = datas;
-
 		});	
 
 		$datas.getAlbums().then(function(datas) {
-			
 			console.log(datas);
 			$scope.albums = datas;
 			$scope.groupBy = 'meta.albumrankcat'
-
 		});
+
 		$scope.orderGroup = function(array) {
 			//console.log(array);
 			//console.log($scope.groupBy);
 			var reverse = ($scope.groupBy == 'meta.albumrankcat') ? true : false;
 			return $filter('orderBy')(array, function(arg) {
-				console.log(arg);
+				//console.log(arg);
 			}, reverse);
 		};	
 
 		$scope.isNavigating = false;
+
 		$scope.toggleNav = function() {
 			$scope.isNavigating = $scope.isNavigating ? false : true;
 		}

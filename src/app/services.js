@@ -17,6 +17,14 @@ app.service('$datas', function($http) {
 				});
 			}
 			return promise['albums'];
+		},
+		getNav: function() {
+			if (!promise['nav']) {
+				promise['nav'] = $http.get(config.navApiUrl).then(function(res) {
+					return res.data;
+				});
+			}
+			return promise['nav'];
 		}
 	};
 });

@@ -4,8 +4,8 @@
     top:0;
     left:-100%;
     width:320px;
-    height:1000px;
-    background:$color-dark;
+    height:100%;
+    background: rgba($color-dark,0.9);
     transition:left 0.25s;
 
     &:after {
@@ -20,5 +20,41 @@
 
     body.is-navigating & {
         left:0;
+    }
+
+    &__list {
+        margin:55px 20px 0 20px;
+        padding:0;
+        list-style:none;
+    }
+
+    &__item {
+        border-bottom:1px solid #FFF;
+        font-size:18px;
+        font-weight:500;
+
+        a {
+            padding:20px;
+            display:block;
+            height:100%;
+            text-decoration:none;
+            color:#FFF;
+
+            &:hover {
+                color:$color-red;
+            }
+        }
+
+        &--cinema,
+        &--danse,
+        &--decouvertes,
+        &--events,
+        &--focus,
+        &--livre,
+        &--mixes,
+        &--non-classe,
+        &--non-classe-en {
+            display:none;
+        }
     }
 }

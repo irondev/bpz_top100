@@ -44,14 +44,28 @@
     }
 
     &__item {
+        transition:width linear 0.25s;
+        
         @include span(1 of 2);
+        margin-bottom: gutter(2/2);
         @media (min-width: $bp-phone) {
             @include span(1 of 3);
+            margin-bottom: gutter(3/2);
         }
         @media (min-width: $bp-tablet) {
-            @include span(1 of 5);
+            @include span(1 of 5); 
+            margin-bottom: gutter(5/2);
         }
-        margin-bottom:10px;
+
+        &.is-active {
+            @include span(2 of 2);
+            @media (min-width: $bp-phone) {
+                @include span(2 of 3);
+            }
+            @media (min-width: $bp-tablet) {
+                @include span(2 of 5);
+            }
+        }
     }
 
 }

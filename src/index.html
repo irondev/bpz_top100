@@ -40,33 +40,35 @@
 
             <div class="layout">
 
-                <section class="intro">
+                <div class="intro">
                     <div class="overheading"><span class="overheading__label">{{infos.meta.surtitre}}</span></div>
                     <h2 class="heading heading--1">{{infos.meta.h2subtitle}}</h2>
                     <p class="paragraph"
                         ng-bind-html="infos.content"></p>
-                </section>
+                </div>
 
                 <section class="filters">
                     <a href class="filters__item button"
                         ng-class="{'is-active': groupBy == 'meta.albumrankcat'}"
-                        ng-click="groupBy = 'meta.albumrankcat'">{{infos.meta.filtre_classement}}</a>
+                        ng-click="setFilter('albumrankcat')">{{infos.meta.filtre_classement}}</a>
                     <a href class="filters__item button"
                         ng-class="{'is-active': groupBy == 'meta.albumyearcat'}"
-                        ng-click="groupBy = 'meta.albumyearcat'">{{infos.meta.filtre_date}}</a>
+                        ng-click="setFilter('albumyearcat')">{{infos.meta.filtre_date}}</a>
                     <a href class="filters__item button"
                         ng-class="{'is-active': groupBy == 'meta.albumstylecat'}"
-                        ng-click="groupBy = 'meta.albumstylecat'">{{infos.meta.filtre_style}}</a>
+                        ng-click="setFilter('albumstylecat')">{{infos.meta.filtre_style}}</a>
                 </section>
 
                 <section class="albums">
                     <ul class="albums__cat"
-                        ng-repeat="(key, cat) in albums | groupBy: groupBy | toArray:true | orderBy:orderGroup">
+                        ng-repeat="(key, cat) in albums | groupBy: groupBy">
                         <div class="albums__caption">
-                            <span class="albums__captionLabel">{{cat.$key}}</span>
+                            <span class="albums__captionLabel">{{key}}</span>
                         </div>
                         <li class="albums__item album"
-                            ng-repeat="(index, album) in cat | orderBy: meta.albumrank">
+                            ng-repeat="(index, album) in cat | orderBy: meta.albumrank"
+                            ng-class="{'is-active': album.slug == activeAlbum}"
+                            ng-click="openAlbum(album.slug)">
                             <img class="album__cover" ng-src="{{album.meta.albumcover.url}}" alt="{{album.title}}" />
                             <span class="album__rank">{{album.meta.albumrank}}</span>
                             <div class="album__infos">

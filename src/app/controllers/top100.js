@@ -1,22 +1,6 @@
 (function() {
 
-	app.controller('Top100Ctrl', function($scope, $rootScope, $datas, $filter, $window) {
-
-		$scope.config = config;
-
-		$scope.documentHeight = documentHeight;
-		angular.element($window).bind('resize', function(e) {
-		    documentHeight = document.documentElement.clientHeight;
-		    $scope.documentHeight = documentHeight;
-		    $scope.$apply();
-		});
-
-		$scope.documentScroll = documentScroll;
-		angular.element($window).bind('scroll', function(e) {
-		    documentScroll = window.pageYOffset;
-		    $scope.documentScroll = documentScroll;
-		    $scope.$apply();
-		});
+	app.controller('Top100Ctrl', function($scope, $rootScope, $filter, $location, $datas) {
 
 		$datas.getInfos().then(function(datas) {
 			console.log(datas);
@@ -26,8 +10,14 @@
 		$datas.getAlbums().then(function(datas) {
 			console.log(datas);
 			$scope.albums = datas;
-			$scope.groupBy = 'meta.albumrankcat'
 		});
+
+		$scope.groupBy = 'meta.albumrankcat';
+		$scope.setFilter = function(filter) {
+			$location.path('/filter/'+ filter);
+			$scope.groupBy = 'meta.' + filter;
+			$scope.activeAlbum = null;
+		}
 
 		$scope.orderGroup = function(array) {
 			//console.log(array);
@@ -36,13 +26,14 @@
 			return $filter('orderBy')(array, function(arg) {
 				//console.log(arg);
 			}, reverse);
-		};	
+		};
 
-		$scope.isNavigating = false;
-
-		$scope.toggleNav = function() {
-			$scope.isNavigating = $scope.isNavigating ? false : true;
+		$scope.activeAlbum = null;
+		$scope.openAlbum = function(albumSlug) {
+			$location.path('/album/'+ albumSlug);
+			$scope.activeAlbum = albumSlug;
 		}
+
 
 	});
 

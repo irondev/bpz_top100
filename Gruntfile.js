@@ -66,6 +66,10 @@ module.exports = function(grunt) {
                     dest: 'dist/js/vendors.min.js'
                 },
                 {
+                    src: ['src/js/player.js'],
+                    dest: 'dist/js/player.js'
+                },
+                {
                     src: ['src/app/config_'+ env +'.js', 'src/app/app.js', 'src/app/services.js', 'src/app/directives.js', 'src/app/controllers/top100.js'],
                     dest: 'dist/js/app.js'
                 }]
@@ -81,7 +85,7 @@ module.exports = function(grunt) {
                 tasks: ['css']
             },
             js: {
-                files: ['src/app/*.js', 'src/app/**/*.js'],
+                files: ['src/app/*.js', 'src/app/**/*.js', 'src/js/*.js'],
                 tasks: ['js']
             },
             html: {
@@ -94,8 +98,8 @@ module.exports = function(grunt) {
             dev: {
                 bsFiles: {
                     src : [
-                        'dist/css/*.css', 'dist/css/**/*.css',
-                        'dist/app/*.js', 'dist/app/**/*.js',
+                        'dist/css/*.css',
+                        'dist/js/*.js',
                         'dist/**', 'dist/**/*'
                     ]
                 },

@@ -65,10 +65,11 @@
                         <div class="albums__caption">
                             <span class="albums__captionLabel">{{key}}</span>
                         </div>
-                        <li class="albums__item album"
-                            ng-repeat="(index, album) in cat | orderBy: meta.albumrank"
+                        <li class="albums__item album js-album"
+                            data-album="{}"
+                            ng-repeat="(index, album) in cat | orderBy: 'meta.albumrank'"
                             ng-class="{'is-active': album.slug == activeAlbum}"
-                            ng-click="openAlbum(album.slug)">
+                            ng-click="openAlbum(album.slug);playAlbumSample(album.meta.albumextract)">
                             <img class="album__cover" ng-src="{{album.meta.albumcover.url}}" alt="{{album.title}}" />
                             <span class="album__rank">{{album.meta.albumrank}}</span>
                             <div class="album__infos">
@@ -86,11 +87,14 @@
 
             <section class="player"
                 ng-class="{'is-active': documentScroll > documentHeight}">
+                <div id="player"></div>
+                <a href onclick="playerStop()">STOP</a>
             </section>
 
         </div>
 
         <script src="js/vendors.min.js"></script>
+        <script src="js/player.js"></script>
         <script src="js/app.js"></script>
     </body>
 </html>

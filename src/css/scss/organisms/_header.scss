@@ -13,9 +13,29 @@
         height:90px;
     }
 
+    &__burger {
+        position:absolute;
+        left:0;
+        top:50%;
+        margin-left:20px;
+        margin-top:-16px;
+        color:$color-red;
+        font-size:32px;
+        text-decoration:none;
+        transition:color linear 0.1s;
+
+        &:hover {
+            color:#FFF;
+        }
+
+        body.is-navigating & {
+            color:#FFF;
+        }
+    }
+
     &__logo {
     	display:inline-block;
-        width:100%;
+        width:260px;
         height:100%;
         background:url("../img/logo.png") no-repeat center;
         background-size:auto 40%;

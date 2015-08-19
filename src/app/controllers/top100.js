@@ -1,6 +1,6 @@
 (function() {
 
-	app.controller('Top100Ctrl', function($scope, $rootScope, $filter, $location, $datas) {
+	app.controller('Top100Ctrl', function($scope, $rootScope, $filter, $location, $datas, $window, $interval) {
 
 		$datas.getInfos().then(function(datas) {
 			console.log(datas);
@@ -34,9 +34,21 @@
 			$scope.activeAlbum = albumSlug;
 		}
 
+		$scope.isPlayerReady = true;
 		$scope.playAlbumSample = function(youtubeUrl) {
-			console.log(youtubeUrl);
 			playerPlay(youtubeUrl);
+			$scope.isPlaying = true;
+		    playerTimer = $interval(function() {
+		        var duration = playerGetDuration();
+		        var currentTime = playerGetCurrentTime();
+		        $scope.playerProgression = currentTime * 100 / duration;
+		    }, 1000);
+		}
+
+		$scope.stopAlbumSample = function() {
+			playerStop();
+			$scope.isPlaying = false;
+			clearInterval(playerTimer);
 		}
 
 	});

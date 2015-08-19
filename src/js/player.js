@@ -1,4 +1,6 @@
-var player;
+var player,
+    playerIsReady = false,
+    playerIsPlaying = false;
 
 var playerInit = function () {
 	var tag = document.createElement('script');
@@ -14,10 +16,15 @@ var onYouTubeIframeAPIReady = function () {
         loop: 0,
         events: {
             'onReady': function(event) {
-                //event.target.playVideo();
+                playerIsReady = true;
             },
             'onStateChange': function(event) {
-                //if (event.data == YT.PlayerState.PLAYING)
+                if (event.data == YT.PlayerState.PLAYING)
+                    playerIsPlaying = true;
+                else
+                    playerIsPlaying = false;
+
+                console.log('from player:'+ playerIsPlaying);
             }
         }
     });
@@ -29,6 +36,14 @@ var playerPlay = function (id) {
 	else if (id.indexOf('?v=') != -1)
 		id = id.substr((id.indexOf('?v=') + 3));
 	player.loadVideoById(id);
+};
+
+var playerGetDuration = function () {
+    return player.getDuration();
+};
+
+var playerGetCurrentTime = function () {
+    return player.getCurrentTime();
 };
 
 var playerStop = function () {

@@ -13,9 +13,25 @@
         margin-bottom:40px;
     }
 
+    &:after {
+        display:block;
+        position:absolute;
+        content:' ';
+        height:50%;
+        width:100%;
+        left:0;
+        bottom:0;
+        background:linear-gradient(to bottom, transparent, rgba(#000,0.9));
+    }
+
     &__image {
         width:100%;
+        height:inherit;
         filter:blur(1px) grayscale(25%);
+        background-size:cover;
+        background-attachment:fixed;
+        background-repeat:no-repeat;
+        background-position:center;
     }
 
     &__text {

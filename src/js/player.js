@@ -30,12 +30,12 @@ var onYouTubeIframeAPIReady = function () {
     });
 };
 
-var playerPlay = function (id) {
-	if (id.indexOf('youtube.com/v/') != -1)
-		player.loadVideoByUrl(id);	
-	else if (id.indexOf('?v=') != -1)
-		id = id.substr((id.indexOf('?v=') + 3));
-	player.loadVideoById(id);
+var playerLoadId = function (id) {
+    if (id.indexOf('youtube.com/v/') != -1)
+        player.loadVideoByUrl(id);  
+    else if (id.indexOf('?v=') != -1)
+        id = id.substr((id.indexOf('?v=') + 3));
+    player.loadVideoById(id);
 };
 
 var playerGetDuration = function () {
@@ -44,6 +44,14 @@ var playerGetDuration = function () {
 
 var playerGetCurrentTime = function () {
     return player.getCurrentTime();
+};
+
+var playerPlay = function () {
+    player.playVideo();
+};
+
+var playerPause = function () {
+    player.pauseVideo();
 };
 
 var playerStop = function () {

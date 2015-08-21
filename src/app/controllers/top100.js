@@ -35,9 +35,25 @@
 		}
 
 		$scope.isPlayerReady = true;
-		$scope.playAlbumSample = function(youtubeUrl) {
-			playerPlay(youtubeUrl);
+		$scope.loadAlbumSample = function(youtubeUrl) {
+			playerLoadId(youtubeUrl);
 			$scope.isPlaying = true;
+			$scope.setProgressBar();
+		}
+
+		$scope.playAlbumSample = function() {
+			playerPlay();
+			$scope.isPlaying = true;
+			$scope.unsetProgressBar();
+		}
+
+		$scope.pauseAlbumSample = function() {
+			playerPause();
+			$scope.isPlaying = false;
+			$scope.unsetProgressBar();
+		}
+
+		$scope.setProgressBar = function() {
 		    playerTimer = $interval(function() {
 		        var duration = playerGetDuration();
 		        var currentTime = playerGetCurrentTime();
@@ -45,10 +61,8 @@
 		    }, 1000);
 		}
 
-		$scope.stopAlbumSample = function() {
-			playerStop();
-			$scope.isPlaying = false;
-			clearInterval(playerTimer);
+		$scope.unsetProgressBar = function() {
+		    clearInterval(playerTimer);
 		}
 
 	});

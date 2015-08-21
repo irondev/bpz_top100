@@ -31,8 +31,9 @@
             <![endif]-->
 
             <section class="cover"
-                ng-style="{'max-height':documentHeight + 'px'}">
-                <img ng-src="{{infos.meta.coverimage.url}}" class="cover__image" />
+                ng-style="{'height':documentHeight + 'px'}">
+                <div class="cover__image"
+                    ng-style="{'background-image':'url(' + infos.meta.coverimage.url + ')'}"></div>
                 <div class="cover__text">
                     <h1 class="cover__title">{{infos.meta.covertitle}}</h1>
                 </div>
@@ -69,7 +70,7 @@
                             data-album="{}"
                             ng-repeat="(index, album) in cat | orderBy: 'meta.albumrank'"
                             ng-class="{'is-active': album.slug == activeAlbum}"
-                            ng-click="openAlbum(album.slug);playAlbumSample(album.meta.albumextract)">
+                            ng-click="openAlbum(album.slug);loadAlbumSample(album.meta.albumextract)">
                             <img class="album__cover" ng-src="{{album.meta.albumcover.url}}" alt="{{album.title}}" />
                             <span class="album__rank">{{album.meta.albumrank}}</span>
                             <div class="album__infos">
@@ -99,7 +100,7 @@
                     <a href class="player__control fa fa-play"
                         ng-hide="isPlaying"></a>
                     <a href class="player__control fa fa-pause"
-                        ng-click="stopAlbumSample()"
+                        ng-click="pauseAlbumSample()"
                         ng-show="isPlaying"></a>
                     <a href class="player__control fa fa-step-forward"></a>
                 </div>

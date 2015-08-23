@@ -7,7 +7,7 @@
 	left:0;
     background:rgba($color-dark, 0.9);
     text-align:center;
-    transition:all 0.25s;
+    transition:height 0.25s;
 
     @media (min-width:$bp-phone) {
         height:90px;
@@ -57,7 +57,7 @@
     }
 
     body.is-navigating & {
-        background:rgba($color-dark, 1);
+        background:$color-dark;
         height:55px;
     }
 }

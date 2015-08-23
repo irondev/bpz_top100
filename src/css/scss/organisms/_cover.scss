@@ -43,7 +43,7 @@
             z-index:1;
             text-align:center;
             width:100%;
-            top:50%;
+            bottom:25%;
             left:0;
             padding:0 1%;
         }
@@ -102,5 +102,35 @@
             }
         }
 
+    }
+
+    &__arrow {
+        display:none;
+        @media (min-width:$bp-phone) {
+            position:absolute;
+            z-index:1;
+            left:50%;
+            bottom:12.5%;
+            margin-left:-18px;
+            margin-top:18px;
+            display:inline-block;
+            width:32px;
+            height:32px;
+            border-radius:18px;
+            font-size:32px;
+            color:#FFF;
+            text-decoration:none;
+            border:2px solid #FFF;
+            opacity:1;
+            transition:opacity 0.5s;
+            animation-name:blinking;
+            animation-duration:2s;
+            animation-iteration-count:infinite;
+
+            &:hover {
+                animation-play-state:paused;
+                opacity:1;
+            }
+        }
     }
 }

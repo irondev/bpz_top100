@@ -37,6 +37,9 @@
                 <div class="cover__text">
                     <h1 class="cover__title">{{infos.meta.covertitle}}</h1>
                 </div>
+                <a href class="cover__arrow fa fa-angle-down"
+                    ng-click="skipCover()"
+                    ng-style="{'visibility':documentScroll > (documentHeight / 2) ? 'hidden' : 'visible'}"></a>
             </section>
 
             <div class="layout">

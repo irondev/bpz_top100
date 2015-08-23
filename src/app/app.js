@@ -27,7 +27,11 @@ var documentScroll = window.pageYOffset;
 		$scope.isNavigating = false;
 		$scope.toggleNav = function() {
 			$scope.isNavigating = $scope.isNavigating ? false : true;
-		}
+		};
+
+		$scope.skipCover = function() {
+			window.scrollTo(0, documentHeight);
+		};
 		
 	}]);
 

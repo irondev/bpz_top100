@@ -5,7 +5,7 @@
     left:-100%;
     width:320px;
     height:100%;
-    background:linear-gradient(to bottom, $color-dark 75%, rgba($color-dark,0.9));
+    background:linear-gradient(to bottom, $color-dark 66%, rgba($color-dark,0.9));
     transition:left 0.25s;
 
     &:after {
@@ -23,7 +23,7 @@
     }
 
     &__list {
-        margin:55px 20px 0 20px;
+        margin:57px 20px 0 20px;
         padding:0;
         list-style:none;
     }
@@ -32,6 +32,10 @@
         border-bottom:1px solid $color-light;
         font-size:18px;
         font-weight:500;
+
+        &:first-child {
+            border-top:1px solid $color-light;
+        }
 
         a {
             padding:20px;

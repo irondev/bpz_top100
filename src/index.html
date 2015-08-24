@@ -73,12 +73,23 @@
                             data-album="{}"
                             ng-repeat="(index, album) in cat | orderBy: 'meta.albumrank'"
                             ng-class="{'is-active': album.slug == activeAlbum}"
-                            ng-click="openAlbum(album.slug);loadAlbumSample(album.meta.albumextract)">
+                            ng-click="openAlbum(album.slug)">
                             <img class="album__cover" ng-src="{{album.meta.albumcover.url}}" alt="{{album.title}}" />
                             <span class="album__rank">{{album.meta.albumrank}}</span>
+                            <span class="album__readmore fa fa-plus"></span>
                             <div class="album__infos">
                                 <span class="album__title"
-                                    ng-bind-html="album.title"></span>
+                                    ng-bind-html="album.meta.albumname"></span>
+                                <span class="album__artist"
+                                    ng-bind-html="album.meta.albumartist"></span>
+                                <a href class="album__play fa fa-play"
+                                    ng-click="loadAlbumSample(album.meta.albumextract)"></a>
+                                <span class="album__style"
+                                    ng-bind-html="album.meta.albumstylecat"></span>
+                                <span class="album__label"
+                                    ng-bind-html="album.meta.albumlabel"></span>
+                                <span class="album__year"
+                                    ng-bind-html="album.meta.albumyear"></span>
                             </div>
                         </li>
                     </ul>

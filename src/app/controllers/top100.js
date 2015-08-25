@@ -35,20 +35,21 @@
 		};
 
 		$scope.isPlayerReady = true;
-		$scope.loadAlbumSample = function(youtubeUrl) {
+		$scope.loadAlbumSample = function(youtubeUrl, index) {
 			playerLoadId(youtubeUrl);
-			$scope.isPlaying = true;
+			$scope.isPlaying = index;
 			$scope.setProgressBar();
 		};
 
 		$scope.playAlbumSample = function() {
 			playerPlay();
-			$scope.isPlaying = true;
+			$scope.isPlaying = $scope.isPausing;
 			$scope.unsetProgressBar();
 		};
 
 		$scope.pauseAlbumSample = function() {
 			playerPause();
+			$scope.isPausing = $scope.isPlaying;
 			$scope.isPlaying = false;
 			$scope.unsetProgressBar();
 		};

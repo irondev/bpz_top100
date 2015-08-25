@@ -23,8 +23,6 @@ var onYouTubeIframeAPIReady = function () {
                     playerIsPlaying = true;
                 else
                     playerIsPlaying = false;
-
-                console.log('from player:'+ playerIsPlaying);
             }
         }
     });

@@ -122,7 +122,14 @@
         transition:opacity 0.25s;
 
         &:hover {
-            opacity:0.5;
+            color:$color-red;
+        }
+
+        .album.is-playing & {
+            color:$color-red;
+            animation-name:blinking;
+            animation-duration:2s;
+            animation-iteration-count:infinite;
         }
     }
 

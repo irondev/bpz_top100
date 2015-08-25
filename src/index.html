@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title ng-bind-html="infos.title">Top 100</title>
+        <title ng-bind-html="infos.meta.covertitle + ' - The Backpackerz'">Les 100 meilleurs albums de Rap US depuis 2000 - The Backpackerz</title>
         <meta name="description" content="{{infos.meta.covertitle}}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" type="image/x-icon" href="http://thebackpackerz.com/wp-content/uploads/2015/05/favicon-the-backpackerz-blog-hip-hop.gif" />
@@ -72,7 +72,7 @@
                         <li class="albums__item album js-album"
                             data-album="{}"
                             ng-repeat="(index, album) in cat | orderBy: 'meta.albumrank'"
-                            ng-class="{'is-active': album.slug == activeAlbum}"
+                            ng-class="{'is-active': album.slug == activeAlbum, 'is-playing': isPlaying == index}"
                             ng-click="openAlbum(album.slug)">
                             <img class="album__cover" ng-src="{{album.meta.albumcover.url}}" alt="{{album.title}}" />
                             <span class="album__rank">{{album.meta.albumrank}}</span>
@@ -83,7 +83,11 @@
                                 <span class="album__artist"
                                     ng-bind-html="album.meta.albumartist"></span>
                                 <a href class="album__play fa fa-play"
-                                    ng-click="loadAlbumSample(album.meta.albumextract)"></a>
+                                    ng-if="isPlaying != index"
+                                    ng-click="loadAlbumSample(album.meta.albumextract, index)"></a>
+                                <a href class="album__play fa fa-pause"
+                                    ng-if="isPlaying == index"
+                                    ng-click="pauseAlbumSample()"></a>
                                 <span class="album__style"
                                     ng-bind-html="album.meta.albumstylecat"></span>
                                 <span class="album__label"

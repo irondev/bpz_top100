@@ -1,6 +1,5 @@
 var player,
-    playerIsReady = false,
-    playerIsPlaying = false;
+    playerTimer;
 
 var playerInit = function () {
 	var tag = document.createElement('script');
@@ -16,13 +15,30 @@ var onYouTubeIframeAPIReady = function () {
         loop: 0,
         events: {
             'onReady': function(event) {
-                playerIsReady = true;
+                var $scope = angular.element(document.querySelector('[ng-controller="Top100Ctrl"]')).scope();
+                $scope.isPlayerReady = true;
             },
             'onStateChange': function(event) {
-                if (event.data == YT.PlayerState.PLAYING)
-                    playerIsPlaying = true;
-                else
-                    playerIsPlaying = false;
+                var $scope = angular.element(document.querySelector('[ng-controller="Top100Ctrl"]')).scope();
+                switch (event.data) {
+                    case YT.PlayerState.PLAYING:
+                        $scope.isLoading = false;
+                        $scope.isPlaying = $scope.playerCurrentAlbum;
+                        $scope.isPausing = false;
+                        $scope.setProgressBar();
+                    break;
+                    case YT.PlayerState.PAUSED:
+                        $scope.isLoading = false;
+                        $scope.isPlaying = false;
+                        $scope.isPausing = $scope.playerCurrentAlbum;
+                    break;
+                    case YT.PlayerState.ENDED:
+                        $scope.isLoading = false;
+                        $scope.isPlaying = false;
+                        $scope.isPausing = false;
+                        $scope.unsetProgressBar();
+                    break;
+                }
             }
         }
     });

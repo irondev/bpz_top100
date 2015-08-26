@@ -29,29 +29,27 @@
 		};*/
 
 		$scope.activeAlbum = null;
+		$scope.playerCurrentAlbum = 0;
 		$scope.openAlbum = function(albumSlug) {
 			$location.path('/album/'+ albumSlug);
 			$scope.activeAlbum = albumSlug;
 		};
 
-		$scope.isPlayerReady = true;
 		$scope.loadAlbumSample = function(youtubeUrl, index) {
-			playerLoadId(youtubeUrl);
-			$scope.isPlaying = index;
-			$scope.setProgressBar();
+			if ($scope.playerCurrentAlbum == index) {
+				$scope.playAlbumSample();
+			} else {
+				$scope.isLoading = $scope.playerCurrentAlbum = index;
+				playerLoadId(youtubeUrl);				
+			}
 		};
 
 		$scope.playAlbumSample = function() {
 			playerPlay();
-			$scope.isPlaying = $scope.isPausing;
-			$scope.unsetProgressBar();
 		};
 
 		$scope.pauseAlbumSample = function() {
 			playerPause();
-			$scope.isPausing = $scope.isPlaying;
-			$scope.isPlaying = false;
-			$scope.unsetProgressBar();
 		};
 
 		$scope.setProgressBar = function() {
@@ -63,7 +61,8 @@
 		};
 
 		$scope.unsetProgressBar = function() {
-		    clearInterval(playerTimer);
+		    $scope.playerProgression = 0;
+		    $interval.cancel(playerTimer);
 		};
 
 	});

@@ -72,7 +72,7 @@
                         <li class="albums__item album js-album"
                             data-album="{}"
                             ng-repeat="(index, album) in cat | orderBy: 'meta.albumrank'"
-                            ng-class="{'is-active': album.slug == activeAlbum, 'is-playing': isPlaying == index}"
+                            ng-class="{'is-active': album.slug == activeAlbum, 'is-playing': isPlaying == index,  'is-loading': isLoading == index}"
                             ng-click="openAlbum(album.slug)">
                             <img class="album__cover" ng-src="{{album.meta.albumcover.url}}" alt="{{album.title}}" />
                             <span class="album__rank">{{album.meta.albumrank}}</span>
@@ -83,8 +83,10 @@
                                 <span class="album__artist"
                                     ng-bind-html="album.meta.albumartist"></span>
                                 <a href class="album__play fa fa-play"
-                                    ng-if="isPlaying != index"
+                                    ng-if="isPlaying != index && isLoading != index"
                                     ng-click="loadAlbumSample(album.meta.albumextract, index)"></a>
+                                <a href class="album__play fa fa-refresh"
+                                    ng-if="isLoading == index"></a>
                                 <a href class="album__play fa fa-pause"
                                     ng-if="isPlaying == index"
                                     ng-click="pauseAlbumSample()"></a>
@@ -105,7 +107,7 @@
             </div>
 
             <section class="player"
-                ng-if="isPlayerReady"
+                ng-show="isPlayerReady"
                 ng-class="{'is-active': documentScroll > documentHeight}">
                 <div id="player"></div>
                 <div class="player__infos">

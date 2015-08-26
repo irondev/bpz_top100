@@ -127,9 +127,20 @@
 
         .album.is-playing & {
             color:$color-red;
-            animation-name:blinking;
+            animation-name:blink;
             animation-duration:2s;
             animation-iteration-count:infinite;
+        }
+
+        .album.is-loading & {
+            animation-name:rotate360;
+            animation-duration:1s;
+            animation-iteration-count:infinite;
+
+            &:hover {
+                cursor:default;
+                color:#FFF;
+            }
         }
     }
 

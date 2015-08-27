@@ -1,3 +1,32 @@
 .footer {
     text-align:center;
+
+    &__share , &__mixtape , &__aperoboat , &__credits {
+    margin-bottom:50px
+    }
+
+    &__share img {
+    margin:25px auto auto auto;
+
+    }
+
+	&__mixtape img {
+    display: block;
+    margin: auto;
+    padding: 10px 25px 25px 25px;
+    width:500px;
+
+    }
+
+    &__aperoboat img {
+    width:500px;
+
+    }
+
+    &__credits img {
+   width: 150px;
+
+    }
+
 }
+

@@ -1,9 +1,17 @@
 @keyframes blink {
-    0%   {opacity:1;}
-    50%  {opacity:0.25;}
+    0% {opacity:1;}
+    50% {opacity:0.25;}
     100% {opacity:1;}
 }
 @keyframes rotate360 {
-    0%   {transform:rotate(0deg);}
-    100% {transform:rotate(360deg);}
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+@keyframes flip {
+    from {transform:rotateY(0deg);}
+    to {transform:rotateY(-180deg);}
+}
+@keyframes backflip {
+    from {transform:rotateY(180deg);}
+    to {transform:rotateY(0deg);}
 }

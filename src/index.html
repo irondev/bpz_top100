@@ -80,12 +80,14 @@
                         <li class="albums__item album js-album"
                             data-album="{}"
                             ng-repeat="(index, album) in cat | orderBy: 'meta.albumrank'"
-                            ng-class="{'is-active': album.slug == activeAlbum, 'is-playing': isPlaying == index,  'is-loading': isLoading == index}"
+                            ng-class="{'is-active': album.slug == activeAlbum, 'is-playing': isPlaying == index,  'is-loading': isLoading == index, 'is-fliping': albumSide == 'back', 'is-backfliping': albumSide == 'front'}"
                             ng-click="openAlbum(album.slug)">
                             <img class="album__cover" ng-src="{{album.meta.albumcover.url}}" alt="{{album.title}}" />
                             <span class="album__rank">{{album.meta.albumrank}}</span>
                             <span class="album__readmore fa fa-plus"></span>
                             <div class="album__infos">
+                                <a href class="album__corner"
+                                    ng-click="albumSide = 'back'"></a>
                                 <span class="album__title"
                                     ng-bind-html="album.meta.albumname"></span>
                                 <span class="album__artist"
@@ -104,6 +106,11 @@
                                     ng-bind-html="album.meta.albumlabel"></span>
                                 <span class="album__year"
                                     ng-bind-html="album.meta.albumyear"></span>
+                            </div>
+                            <div class="album__edito">
+                                <a href class="album__corner"
+                                    ng-click="albumSide = 'front'"></a>
+                                <p class="paragraph">Vivamus accumsan semper purus eget auctor. Aliquam orci lorem, sagittis at massa quis, posuere pulvinar tellus. Sed nec dui eget arcu accumsan molestie. Nulla ac massa gravida, pellentesque lectus ac, facilisis ipsum. Morbi sit amet nulla lacus. Pellentesque hendrerit interdum lobortis. Curabitur ullamcorper purus nec ipsum molestie malesuada. Donec eget nibh interdum, scelerisque ligula ut, porttitor urna.</p>
                             </div>
                         </li>
                     </ul>

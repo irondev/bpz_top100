@@ -3,6 +3,7 @@
     overflow:hidden;
     cursor:pointer;
     background:$color-dark;
+    perspective:1000px;
 
     &:after {
         content:' ';
@@ -94,10 +95,62 @@
         transition:opacity 0.25s;
         transition-delay:0.25s;
         color:#FFF;
+        animation-timing-function:ease-out;
+        animation-duration:1s;
+        transform-style: preserve-3d;
+        backface-visibility:hidden;
 
         .album.is-active & {
             opacity:1;
             visibility:visible;
+        }
+
+        .album.is-fliping & {
+            animation-name:flip;
+            transform:rotateY(180deg);
+        }
+
+        .album.is-backfliping & {
+            animation-name:backflip;
+            transform:rotateY(0deg);
+        }
+    }
+
+    &__edito {
+        visibility:hidden;
+        position:absolute;
+        z-index:2;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        padding:20px;
+        box-sizing:border-box;
+        transform:rotateY(180deg);
+        animation-timing-function:ease-out;
+        animation-duration:1s;
+        transform-style: preserve-3d;
+        backface-visibility:hidden;
+
+        .paragraph {
+            color:#FFF;
+            font-size:14px;
+            font-weight:300;
+            font-style:italic;
+        }
+
+        .album.is-active & {
+            visibility:visible;
+        }
+
+        .album.is-fliping & {
+            animation-name:backflip;
+            transform:rotateY(0deg);
+        }
+
+        .album.is-backfliping & {
+            animation-name:flip;
+            transform:rotateY(-180deg);
         }
     }
 
@@ -187,6 +240,72 @@
         font-weight:900;
         font-style:italic;
         color:#FFF;
+    }
+
+    &__corner {
+        position:absolute;
+        top:2px;
+        right:3px;
+        display:block;
+        width:48px;
+        height:48px;
+        overflow:hidden;
+        opacity:1;
+        transition:opacity ease-out 0.5s;
+
+        .album.is-fliping .album__infos & {
+            opacity:0;
+        }
+        .album.is-backfliping .album__edito & {
+            opacity:0;
+        }
+
+        &:before {
+            content:' ';
+            display:block;
+            position:absolute;
+            top:-135%;
+            right:-135%;
+            width:200%;
+            height:200%;
+            background:#FFF;
+            opacity:0.5;
+            transform:rotate(45deg);
+            transition:all linear 0.1s;
+        }
+
+        &:after {
+            position:absolute;
+            display:block;
+            top:3px;
+            right:3px;
+            font-family:'FontAwesome';
+            font-size:13px;
+            color:$color-dark;
+            transition:all linear 0.1s;
+
+            .album__infos & {
+                content:'\f065';
+            }
+            .album__edito & {
+                content:'\f066';
+            }
+        }
+
+        &:hover {
+            &:before {
+                top:-120%;
+                right:-120%;
+                opacity:1;
+            }
+            &:after {
+                top:5px;
+                right:5px;
+                font-size:16px;
+                color:$color-red;
+            }
+        }
+        
     }
 
 }

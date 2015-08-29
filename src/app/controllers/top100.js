@@ -1,7 +1,8 @@
 (function() {
 
-	app.controller('Top100Ctrl', function($scope, $rootScope, $filter, $location, $window, $document, $interval, $q, $datas, $imageCache) {
+	app.controller('Top100Ctrl', function($scope, $rootScope, $filter, $location, $window, $document, $timeout, $interval, $q, $datas, $imageCache) {
 
+		var startTime = new Date();
 		var promiseInfos = $datas.getInfos();
 		var promiseAlbums = $datas.getAlbums();
 		$q.all([promiseInfos, promiseAlbums]).then(function(datas) {
@@ -11,7 +12,15 @@
 				imageToPreload.push(datas[1][i].meta.albumcover.url);
 			}*/
 			$imageCache.Cache(imageToPreload).then(function() {
-				$scope.appReady = true;
+				var now = new Date();
+				var loadingTime = now - startTime;
+				if (loadingTime < config.loaderMinTime) {
+					$timeout(function() {
+						$scope.appReady = true;
+					}, (config.loaderMinTime - loadingTime));
+				} else {
+					$scope.appReady = true;
+				}
 			});
 		}, function(r) {
 			console.error(r);

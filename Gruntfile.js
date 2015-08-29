@@ -58,7 +58,7 @@ module.exports = function(grunt) {
 
         concat: {
             options: {
-                separator: ';'
+                separator: ";\n"
             },
             default: {
                 files: [{
@@ -70,7 +70,7 @@ module.exports = function(grunt) {
                     dest: 'dist/js/player.js'
                 },
                 {
-                    src: ['src/app/config_'+ env +'.js', 'src/app/app.js', 'src/app/services.js', 'src/app/directives.js', 'src/app/controllers/top100.js'],
+                    src: ['src/app/config_'+ env +'.js', 'src/app/app.js', 'src/app/services.js', 'src/app/directives.js', 'src/app/controllers/*.js'],
                     dest: 'dist/js/app.js'
                 }]
             }

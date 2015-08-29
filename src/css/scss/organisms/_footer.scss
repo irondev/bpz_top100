@@ -1,32 +1,44 @@
 .footer {
+    border-top:1px solid $color-dark;
+    padding-top:40px;
+    margin-bottom:60px;
     text-align:center;
 
-    &__share , &__mixtape , &__aperoboat , &__credits {
-    margin-bottom:50px
+    .heading {
+        margin-bottom:10px;
     }
 
-    &__share img {
-    margin:25px auto auto auto;
-
+    .paragraph {
+        margin-bottom:20px;
     }
 
-	&__mixtape img {
-    display: block;
-    margin: auto;
-    padding: 10px 25px 25px 25px;
-    width:500px;
-
+    &__shares {
+        margin-bottom:60px;
     }
 
-    &__aperoboat img {
-    width:500px;
+    &__flyer {
+        width:90%;
+        max-width:500px;
+        margin:0 auto 60px auto;
+        text-decoration:none;
 
-    }
+        img {
+            width:100%;
+            padding:1px;
+            border:2px solid $color-light;
+            transition: border linear 0.1s;
+        }
 
-    &__credits img {
-   width: 150px;
+        a {
+            text-decoration:none;
+            &:hover img {
+                border-color:$color-red;
+            }
+        }
 
+        .button {
+            margin-top:20px;
+        }
     }
 
 }
-

@@ -1,57 +1,30 @@
 .heading {
-    margin:0;
+    margin:0 auto;
     color:$color-dark;
     text-transform:uppercase;
+    font-weight:900;
+    font-style:italic;
+    text-align:center;
 
     &--1 {
-        font-size:20px;
-        font-weight:900;
-        font-style:italic;
-        text-align:center;
-        margin:0 auto 20px auto;
-
+        font-size:22px;
         @media (min-width:$bp-phablet) {
-            font-size:28px;
-            margin-bottom:40px;
+            font-size:30px;
         }
-
         @media (min-width:$bp-tablet) {
+            font-size:36px;
             max-width:80%;
-            font-size:32px;
         }
     }
 
     &--2 {
-        font-size:18px;
-        font-weight:900;
-        font-style:italic;
-        text-align:center;
-        margin:0 auto 20px auto;
-
+        font-size:16px;
         @media (min-width:$bp-phablet) {
             font-size:24px;
-            margin-bottom:40px;
         }
-
         @media (min-width:$bp-tablet) {
-            max-width:80%;
             font-size:28px;
+            max-width:80%;
         }
-    }
-
-    &--3 {
-        font-size: 40px;
-        font-weight:900;
-        color: #222421;
-        font-style:italic;
-        margin:0 auto 15px auto;
-    }
-
-    &--4 {
-        font-size: 25px;
-        font-weight:900;
-        color: #222421;
-        font-style:italic;
-        margin:10px auto 20px auto;
     }
 }

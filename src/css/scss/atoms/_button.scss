@@ -1,6 +1,6 @@
 .button {
     display:inline-block;
-    line-height:50px;
+    line-height:40px;
     padding:0 15px;
     border:2px solid $color-dark;
     box-sizing:border-box;
@@ -12,15 +12,23 @@
     color:#000;
     background:#FFF;
     text-align:center;
-    transition: background 0.25s;
+    border-radius:3px;
+    transition: background linear 0.25s;
 
     &:hover {
         background:$color-lighter;
     }
 
-    &.is-active {
-        background:$color-dark;
+    &--important {
+        background:$color-red;
         color:#FFF;
-        cursor:default;
+        border:none;
+        text-transform:initial;
+        font-weight:700;
+        font-size:16px;
+
+        &:hover {
+            background:rgba($color-red, 0.9);
+        }
     }
 }

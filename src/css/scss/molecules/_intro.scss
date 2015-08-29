@@ -1,14 +1,19 @@
 .intro {
     margin-bottom:40px;
 
+    .heading {
+        margin-bottom:20px;
+        @media (min-width:$bp-phablet) {
+            margin-bottom:40px;
+        }
+    }
+
     .paragraph {
     	margin:0 0.9090909091%;
-
     	@media (min-width:$bp-tablet) {
 	        column-count: 2;
 	        column-gap: 80px;
         }
-
     }
 
 }

@@ -9,22 +9,33 @@
         }
         position:relative;
 
+        &.button {
+            line-height:50px;
+            border-radius:0;            
+        }
+
         &:first-child {
         	border-left:2px solid $color-dark;
         }
 
-        &.is-active:before {
-        	content:' ';
-        	display:block;
-        	width:20px;
-        	height:20px;
-        	background:#FFF;
-        	position:absolute;
-        	z-index:1;
-        	top:-15px;
-        	left:50%;
-        	margin-left:-10px;
-        	transform:rotate(45deg);
+        &.is-active {
+            background:$color-dark;
+            color:#FFF;
+            cursor:default;
+
+            &:before {
+                content:' ';
+                display:block;
+                width:20px;
+                height:20px;
+                background:#FFF;
+                position:absolute;
+                z-index:1;
+                top:-15px;
+                left:50%;
+                margin-left:-10px;
+                transform:rotate(45deg);
+            }
         }
     }
 

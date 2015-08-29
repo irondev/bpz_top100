@@ -1,25 +1,38 @@
-<div class="footer__share">
-	<h3 class="heading heading--3">Félicitations !</h3>
-	<h4 class="heading heading--4">Vous êtes arrivé au bout de ce classement </h4>
-	<p class="paragraph paragraph--2">Si vous avez aimé cette expérience, parlez en autour de vous…</p>
-	<img src="../../img/share-btns.png" alt="share btns" width="535px">
+<h3 class="heading heading--1">Félicitations !</h3>
+<h4 class="heading heading--2">Vous êtes arrivé au bout de ce classement </h4>
+<p class="paragraph paragraph--oneline">Si vous avez aimé cette expérience, parlez en autour de vous...</p>
+
+<div class="footer__shares" ng-controller="ShareCtrl">
+	<a href class="share share--facebook" ng-click="share('facebook')">
+		<span class="share__label">Facebook</span>
+	</a>
+	<a href class="share share--twitter" ng-click="share('twitter')">
+		<span class="share__label">Tweeter</span>
+	</a>
+	<a href class="share share--google" ng-click="share('google')">
+		<span class="share__label">Google</span>
+	</a>
 </div>
 
-<div class="footer__mixtape">
-	<h3 class="heading heading--3">NE PARTEZ PAS LES MAINS VIDES !</h3>
-	<p class="paragraph paragraph--2">Télécharger la mixtape REWIND qui retrace ce classement à travers une sélection de 100 morceaux.</p>
-	<a class="mixtape-cover" href="">
-		<img src="../../img/MIX-LA-FRESH-TOUCH-AN-INTRODUCTION-TO-FRENCH-FUTURE-BEAT-ALBUM-COVER.png" alt="mixtape REWIND - les 100 meilleurs albums de rap US depuis 2000" width="500px"></a>
-	<a class="button" href="">Télécharger la mixtape</a>
+<h4 class="heading heading--2">Ne partez pas les mains vides !</h3>
+<div class="footer__flyer">
+	<p class="paragraph paragraph--oneline">Télécharger la mixtape REWIND qui retrace ce classement à travers une sélection de 100 morceaux.</p>
+	<a href="#">
+		<img src="./img/MIX-LA-FRESH-TOUCH-AN-INTRODUCTION-TO-FRENCH-FUTURE-BEAT-ALBUM-COVER.png" alt="mixtape REWIND - les 100 meilleurs albums de rap US depuis 2000" />
+	</a>
+	<a href="#" class="button button--important">Télécharger la mixtape</a>
 </div>
 
-<div class="footer__aperoboat">
-	<h3 class="heading heading--3">Et RDV AU BATOFAR LE 24 SEPTEMBRE</h3>
-	<p class="paragraph paragraph--2">pour une soirée dédiée à ce classement des 100 classiques de Rap US post-2000</p>
-	<img src="../../img/Flyer-10x14-with-logo.png" alt="aperoboat REWIND - les 100 meilleurs albums de rap US depuis 2000">
+<h4 class="heading heading--2">Et RDV au Batofar le 24 Septembre</h3>
+<div class="footer__flyer">
+	<p class="paragraph paragraph--oneline">Pour une soirée dédiée à ce classement des 100 classiques de Rap US post-2000</p>
+	<a href="#">
+		<img src="./img/Flyer-10x14-with-logo.png" alt="aperoboat REWIND - les 100 meilleurs albums de rap US depuis 2000" />
+	</a>
+	<a href="#" class="button">En savoir plus</a>
 </div>
 
 <div class="footer__credits">
-	<p class="paragraph paragraph--2">Ce classement vous a été proposé par :</p>
-	<img src="../../img/logo-tbpz-V2-square-blk.png" alt="the backpakcerz">
+	<p class="paragraph paragraph--oneline">Ce classement vous a été proposé par :</p>
+	<img src="./img/logo-tbpz-V2-square-blk.png" alt="the backpakcerz" />
 </div>

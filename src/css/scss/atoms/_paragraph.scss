@@ -4,17 +4,14 @@
     line-height:20px;
     text-align:justify;
 
-    &--2 {
-    text-align:center;
-    font-weight:100;
-    font-size: 18px;
-    margin:0 auto 20px auto;
-
+    &--oneline {
+        font-size: 18px;
+        font-style:italic;
+        text-align:center;
     }
 
     p {
     	margin:0;
     }
-
 
 }

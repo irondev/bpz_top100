@@ -24,11 +24,14 @@
 
     &:before {
         display:inline-block;
-        float:left;
         width:18px;
         height:18px;
         font-family:'FontAwesome';
         font-size:18px;
+
+        @media (min-width:$bp-tablet) {
+            float:left;
+        }
     }
 
     &__label {

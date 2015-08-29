@@ -8,6 +8,7 @@ var documentScroll = window.pageYOffset;
 	
 	app.run(['$rootScope', function($scope, $rootScope) {
 
+		$scope.appReady = false;
 		$scope.config = config;
 
 		$scope.documentHeight = documentHeight;

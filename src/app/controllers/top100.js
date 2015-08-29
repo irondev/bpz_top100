@@ -1,11 +1,26 @@
 (function() {
 
-	app.controller('Top100Ctrl', function($scope, $rootScope, $filter, $location, $datas, $window, $document, $interval) {
+	app.controller('Top100Ctrl', function($scope, $rootScope, $filter, $location, $window, $document, $interval, $q, $datas, $imageCache) {
+
+		var promiseInfos = $datas.getInfos();
+		var promiseAlbums = $datas.getAlbums();
+		$q.all([promiseInfos, promiseAlbums]).then(function(datas) {
+			var imageToPreload = [];
+			imageToPreload.push(datas[0].meta.coverimage.url);
+			/*for (var i = 0; i < datas[1].length; i++) {
+				imageToPreload.push(datas[1][i].meta.albumcover.url);
+			}*/
+			$imageCache.Cache(imageToPreload).then(function() {
+				$scope.appReady = true;
+			});
+		}, function(r) {
+			console.error(r);
+		});
 
 		$datas.getInfos().then(function(datas) {
 			console.log(datas);
 			$scope.infos = datas;
-		});	
+		});
 
 		$datas.getAlbums().then(function(datas) {
 			console.log(datas);

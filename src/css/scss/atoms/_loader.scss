@@ -1,0 +1,15 @@
+.loader {
+    position:fixed;
+    top:50%;
+    margin-top:-57px;
+    left:50%;
+    margin-left:-191px;
+    display:block;
+    width:382px;
+    height:114px;
+    background:url('../img/loader-intro.gif') no-repeat;
+
+    body.is-ready & {
+        display:none;
+    }
+}

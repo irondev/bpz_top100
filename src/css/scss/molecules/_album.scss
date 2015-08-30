@@ -96,7 +96,7 @@
         transition-delay:0.25s;
         color:#FFF;
         animation-timing-function:ease-out;
-        animation-duration:1s;
+        animation-duration:0.6s;
         transform-style: preserve-3d;
         backface-visibility:hidden;
 
@@ -128,7 +128,7 @@
         box-sizing:border-box;
         transform:rotateY(180deg);
         animation-timing-function:ease-out;
-        animation-duration:1s;
+        animation-duration:0.6s;
         transform-style: preserve-3d;
         backface-visibility:hidden;
 
@@ -251,7 +251,8 @@
         height:48px;
         overflow:hidden;
         opacity:1;
-        transition:opacity ease-out 0.5s;
+        transition:opacity linear 0.15s;
+        transition-delay:0.15s;
 
         .album.is-fliping .album__infos & {
             opacity:0;

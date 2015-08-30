@@ -19,6 +19,9 @@
         <meta name="twitter:creator" content="@TheBackPackerz" />
         <link rel="shortcut icon" type="image/x-icon" href="http://thebackpackerz.com/wp-content/uploads/2015/05/favicon-the-backpackerz-blog-hip-hop.gif" />
         <link href="css/style.min.css" rel="stylesheet" type="text/css">
+        <!--[if lte IE 9]>
+        <link rel="stylesheet" type="text/css" href="css/ie.css" />
+        <![endif]-->
     </head>
     <body 
         ng-class="{'is-ready': appReady, 'is-navigating': isNavigating}">
@@ -33,10 +36,6 @@
         </header>
 
         <div class="container">
-
-            <!--[if lt IE 8]>
-                <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-            <![endif]-->
 
             <section class="cover"
                 ng-style="{'height':documentHeight + 'px'}">
@@ -139,12 +138,12 @@
                         ng-show="isPlaying"></a>
                     <a href class="player__control fa fa-step-forward"></a>
                 </div>
-                <div class="player__progressbar">
-                    <div class="progressbar">
-                        <div class="progressbar__complete"
-                            ng-style="{'width': playerProgression + '%'}"></div>
+                    <div class="player__progressbar">
+                        <div class="progressbar">
+                            <div class="progressbar__complete"
+                                ng-style="{'width': playerProgression + '%'}"></div>
+                        </div>
                     </div>
-                </div>
                 <div class="player__button">
                     <a href class="button">Télécharger la mixtape</a>
                 </div>
@@ -155,7 +154,11 @@
 
         </div>
 
-        <div class="loader"></div>
+        <div class="loader">
+            <!--[if lte IE 9]>
+                <div class="browserupgrade">Désolé, <strong>la version d'Internet Explorer que vous utilisez n'est pas prise en charge</strong>. Merci de <a href="http://browsehappy.com/" target="_blank">mettre à jour votre navigateur</a> afin de profiter de l'expérience.</div>
+            <![endif]-->
+        </div>
 
         <script src="js/vendors.min.js"></script>
         <script src="js/player.js"></script>

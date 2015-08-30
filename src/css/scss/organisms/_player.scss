@@ -8,6 +8,7 @@
     bottom:-100%;
     transition:bottom 0.25s;
     background:rgba(#000, 0.9);
+    text-align:center;
 
     &:before {
         display:block;
@@ -42,21 +43,16 @@
         vertical-align:middle;
     }
 
-    &__infos {
-        width:15%;
-    }
-
     &__controls {
-        width:15%;
+        width:150px;
     }
 
     &__progressbar {
-        width:40%;
+        width:300px;
     }
 
     &__button {
         display:none;
-        width:20%;
         text-align:center;
 
         .button {
@@ -78,7 +74,6 @@
 
     &__branding {
         display:none;
-        width:10%;
         text-align:center;
 
         @media (min-width:$bp-max) {
@@ -88,8 +83,8 @@
 
     &__control {
         display:inline-block;
-        font-size:32px;
-        margin:0 10px;
+        font-size:26px;
+        margin:0 5px;
     }
 
     &__logo {

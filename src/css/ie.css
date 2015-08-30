@@ -1,0 +1,5 @@
+.header {background:#222421;}
+.browserupgrade {margin-top:120px;}
+.browserupgrade a:hover {text-decoration:none;}
+body.is-ready .loader {display:block;}
+body.is-ready .container {display:none;}

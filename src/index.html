@@ -72,13 +72,12 @@
 
                 <section class="albums">
                     <ul class="albums__cat"
-                        ng-repeat="(key, cat) in albums | groupBy: groupBy">
+                        ng-repeat="(key, cat) in albums | orderBy: groupOrderBy | groupBy: groupBy">
                         <div class="albums__caption">
                             <span class="albums__captionLabel">{{key}}</span>
                         </div>
                         <li class="albums__item album js-album"
-                            data-album="{}"
-                            ng-repeat="(index, album) in cat | orderBy: 'meta.albumrank'"
+                            ng-repeat="(index, album) in cat | orderBy: ['-meta.albumrank.length', '-meta.albumrank']"
                             ng-class="{'is-active': album.slug == activeAlbum, 'is-playing': isPlaying == index,  'is-loading': isLoading == index, 'is-fliping': albumSide == 'back', 'is-backfliping': albumSide == 'front'}"
                             ng-click="openAlbum(album.slug)">
                             <img class="album__cover" ng-src="{{album.meta.albumcover.url}}" alt="{{album.title}}" />

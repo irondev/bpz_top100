@@ -6,10 +6,12 @@
 		var promiseInfos = $datas.getInfos();
 		var promiseAlbums = $datas.getAlbums();
 		$q.all([promiseInfos, promiseAlbums]).then(function(datas) {
+			$scope.infos = datas[0];console.log($scope.infos);
+			$scope.albums = datas[1];console.log($scope.albums);
 			var imageToPreload = [];
-			imageToPreload.push(datas[0].meta.coverimage.url);
-			/*for (var i = 0; i < datas[1].length; i++) {
-				imageToPreload.push(datas[1][i].meta.albumcover.url);
+			imageToPreload.push($scope.infos.meta.coverimage.url);
+			/*for (var i = 0; i < $scope.albums.length; i++) {
+				imageToPreload.push($scope.albums[i].meta.albumcover.url);
 			}*/
 			$imageCache.Cache(imageToPreload).then(function() {
 				var now = new Date();
@@ -26,31 +28,14 @@
 			console.error(r);
 		});
 
-		$datas.getInfos().then(function(datas) {
-			console.log(datas);
-			$scope.infos = datas;
-		});
-
-		$datas.getAlbums().then(function(datas) {
-			console.log(datas);
-			$scope.albums = datas;
-		});
-
 		$scope.groupBy = 'meta.albumrankcat';
+		$scope.groupOrderBy = '-meta.albumrankcat';
 		$scope.setFilter = function(filter) {
 			$location.path('/filter/'+ filter);
 			$scope.groupBy = 'meta.' + filter;
+			$scope.groupOrderBy = ($scope.groupBy == 'meta.albumrankcat') ? '-meta.albumrankcat' : $scope.groupBy;
 			$scope.activeAlbum = null;
 		};
-
-		/*$scope.orderGroup = function(array) {
-			//console.log(array);
-			//console.log($scope.groupBy);
-			var reverse = ($scope.groupBy == 'meta.albumrankcat') ? true : false;
-			return $filter('orderBy')(array, function(arg) {
-				//console.log(arg);
-			}, reverse);
-		};*/
 
 		$scope.activeAlbum = null;
 		$scope.playerCurrentAlbum = 0;

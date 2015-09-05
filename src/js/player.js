@@ -23,14 +23,14 @@ var onYouTubeIframeAPIReady = function () {
                 switch (event.data) {
                     case YT.PlayerState.PLAYING:
                         $scope.isLoading = false;
-                        $scope.isPlaying = $scope.playerCurrentAlbum;
+                        $scope.isPlaying = $scope.currentAlbum;
                         $scope.isPausing = false;
                         $scope.setProgressBar();
                     break;
                     case YT.PlayerState.PAUSED:
                         $scope.isLoading = false;
                         $scope.isPlaying = false;
-                        $scope.isPausing = $scope.playerCurrentAlbum;
+                        $scope.isPausing = $scope.currentAlbum;
                     break;
                     case YT.PlayerState.ENDED:
                         $scope.isLoading = false;

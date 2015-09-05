@@ -70,7 +70,8 @@
                         ng-click="setFilter('albumstylecat')">{{infos.meta.filtre_style}}</a>
                 </section>
 
-                <section class="albums">
+                <section class="albums"
+                    ng-class="{'is-orderby-rankcat': groupBy == 'meta.albumrankcat', 'is-orderby-yearcat': groupBy == 'meta.albumyearcat', 'is-orderby-stylecat': groupBy == 'meta.albumstylecat'}">
                     <ul class="albums__cat"
                         ng-repeat="(key, cat) in albums | orderBy: groupOrderBy | groupBy: groupBy">
                         <div class="albums__caption">
@@ -78,8 +79,8 @@
                         </div>
                         <li class="albums__item album js-album"
                             ng-repeat="(index, album) in cat | orderBy: ['-meta.albumrank.length', '-meta.albumrank']"
-                            ng-class="{'is-active': album.slug == activeAlbum, 'is-playing': isPlaying == index,  'is-loading': isLoading == index, 'is-fliping': albumSide == 'back', 'is-backfliping': albumSide == 'front'}"
-                            ng-click="openAlbum(album.slug)">
+                            ng-class="{'is-active': album.slug == openedAlbum.slug, 'is-playing': isPlaying.slug == album.slug,  'is-loading': isLoading.slug == album.slug, 'is-fliping': albumSide == 'back', 'is-backfliping': albumSide == 'front'}"
+                            ng-click="openAlbum(album)">
                             <img class="album__cover" ng-src="{{album.meta.albumcover.url}}" alt="{{album.title}}" />
                             <span class="album__rank">{{album.meta.albumrank}}</span>
                             <span class="album__readmore fa fa-plus"></span>
@@ -91,12 +92,12 @@
                                 <span class="album__artist"
                                     ng-bind-html="album.meta.albumartist"></span>
                                 <a href class="album__play fa fa-play"
-                                    ng-if="isPlaying != index && isLoading != index"
-                                    ng-click="loadAlbumSample(album.meta.albumextract, index)"></a>
+                                    ng-if="isPlaying.slug != album.slug && isLoading.slug != album.slug"
+                                    ng-click="loadAlbumSample(album)"></a>
                                 <a href class="album__play fa fa-refresh"
-                                    ng-if="isLoading == index"></a>
+                                    ng-if="isLoading.slug == album.slug"></a>
                                 <a href class="album__play fa fa-pause"
-                                    ng-if="isPlaying == index"
+                                    ng-if="isPlaying.slug == album.slug"
                                     ng-click="pauseAlbumSample()"></a>
                                 <span class="album__style"
                                     ng-bind-html="album.meta.albumstylecat"></span>
@@ -131,6 +132,7 @@
                 <div class="player__controls">
                     <a href class="player__control fa fa-step-backward"></a>
                     <a href class="player__control fa fa-play"
+                        ng-click="loadAlbumSample(currentAlbum)"
                         ng-hide="isPlaying"></a>
                     <a href class="player__control fa fa-pause"
                         ng-click="pauseAlbumSample()"

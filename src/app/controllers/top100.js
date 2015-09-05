@@ -8,6 +8,7 @@
 		$q.all([promiseInfos, promiseAlbums]).then(function(datas) {
 			$scope.infos = datas[0];console.log($scope.infos);
 			$scope.albums = datas[1];console.log($scope.albums);
+			$scope.currentAlbum = $scope.albums[0];
 			var imageToPreload = [];
 			imageToPreload.push($scope.infos.meta.coverimage.url);
 			/*for (var i = 0; i < $scope.albums.length; i++) {
@@ -34,23 +35,22 @@
 			$location.path('/filter/'+ filter);
 			$scope.groupBy = 'meta.' + filter;
 			$scope.groupOrderBy = ($scope.groupBy == 'meta.albumrankcat') ? '-meta.albumrankcat' : $scope.groupBy;
-			$scope.activeAlbum = null;
+			$scope.openedAlbum = null;
 		};
 
-		$scope.activeAlbum = null;
-		$scope.playerCurrentAlbum = 0;
-		$scope.openAlbum = function(albumSlug) {
-			$location.path('/album/'+ albumSlug);
-			$scope.activeAlbum = albumSlug;
+		$scope.openAlbum = function(albumObj) {
+			$location.path('/album/'+ albumObj.slug);
+			$scope.openedAlbum = albumObj;
 		};
 
-		$scope.loadAlbumSample = function(youtubeUrl, index) {
-			if ($scope.playerCurrentAlbum == index) {
+		$scope.loadAlbumSample = function(albumObj) {
+			if ($scope.loadedAlbum && $scope.loadedAlbum.slug == albumObj.slug) {
 				$scope.playAlbumSample();
 			} else {
-				$scope.isLoading = $scope.playerCurrentAlbum = index;
-				playerLoadId(youtubeUrl);				
+				$scope.isLoading = $scope.loadedAlbum = $scope.openedAlbum = $scope.currentAlbum = albumObj;
+				playerLoadId($scope.loadedAlbum.meta.albumextract);				
 			}
+			console.log($scope.loadedAlbum);
 		};
 
 		$scope.playAlbumSample = function() {

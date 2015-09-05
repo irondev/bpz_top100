@@ -1,6 +1,16 @@
 .albums {
 
     margin-bottom:40px;
+    animation-timing-function:ease-out;
+    animation-duration:0.6s;
+    transform-style: preserve-3d;
+    backface-visibility:hidden;
+
+    &.is-orderby-rankcat,
+    &.is-orderby-yearcat,
+    &.is-orderby-stylecat {
+        animation-name:backflip;
+    }
 
     &__cat {
         position:relative;

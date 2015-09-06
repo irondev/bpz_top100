@@ -41,6 +41,28 @@
         background-size:auto 40%;
     }
 
+    &__shares {
+        display:none;
+        position:absolute;
+        right:0;
+        top:50%;
+        margin-right:20px;
+        margin-top:-14px;
+
+        .share {
+            height:28px;
+            padding:0 6px;
+            &:before {
+                float:left;
+                line-height:30px;
+            }
+        }
+
+        @media (min-width:$bp-phablet) {
+            display:block;
+        }
+    }
+
     &:after {
         display:block;
         position:absolute;

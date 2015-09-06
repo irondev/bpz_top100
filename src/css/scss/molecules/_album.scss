@@ -173,6 +173,7 @@
         text-decoration:none;
         opacity:1;
         transition:opacity 0.25s;
+        backface-visibility:hidden;
 
         &:hover {
             color:$color-red;

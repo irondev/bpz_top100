@@ -1,5 +1,4 @@
 .player {
-    display:table;
     position:fixed;
 	z-index:10;
 	width:100%;
@@ -9,6 +8,7 @@
     transition:bottom 0.25s;
     background:rgba(#000, 0.9);
     text-align:center;
+    color:#FFF;
 
     &:before {
         display:block;
@@ -34,32 +34,114 @@
         text-decoration:none;
     }
 
+    &__wrapper {
+        width:100%;
+        height:inherit;
+        display:table;
+        @media (min-width:$bp-max) {
+            width:$bp-max;
+            margin:auto;
+        }
+    }
+
     &__infos,
     &__controls,
-    &__progressbar,
-    &__button,
-    &__branding {
+    &__button {
         display:table-cell;
         vertical-align:middle;
     }
 
-    &__controls {
-        width:150px;
+    &__infos {
+        width:10%;
+        text-align:left;
+        color:#FFF;
+        @media (min-width:$bp-phablet) {
+            width:33%;
+        }
+        @media (min-width:$bp-max) {
+            width:25%;
+        }
+
+        &Cover {
+            width:42px;
+            float:left;
+            margin:0 10px;
+            border:1px solid $color-light;
+        }
+        &Title {
+            display:none;
+            font-size:14px;
+            font-weight:400;
+            font-style:italic;
+            margin-bottom:3px;
+            max-width:100%;
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+            @media (min-width:$bp-phablet) {
+                display:block;
+            }
+            @media (min-width:$bp-max) {
+                font-size:16px;
+            }
+        }
+        &Artist {
+            display:none;
+            font-size:14px;
+            font-weight:900;
+            font-style:italic;
+            text-transform:uppercase;
+            max-width:100%;
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+            @media (min-width:$bp-phablet) {
+                display:block;
+            }
+            @media (min-width:$bp-max) {
+                font-size:16px;
+            }
+        }
     }
 
-    &__progressbar {
-        width:300px;
+    &__controls {
+
+        .progressbar {
+            width:150px;
+            margin-left:10px;
+            @media (min-width:$bp-phone) {
+                width:200px;
+            }
+            @media (min-width:$bp-tablet) {
+                width:300px;
+            }
+        }
+    }
+
+    &__control {
+        display:inline-block;
+        vertical-align:middle;
+        font-size:26px;
+        margin:0 5px;
+        transition:color 0.1s;
+
+        &.fa-pause,
+        &:hover {
+            color:$color-red;
+        }
     }
 
     &__button {
+        width:25%;
         display:none;
-        text-align:center;
+        text-align:right;
 
         .button {
             background:$color-dark;
             border-color:#FFF;
             line-height:30px;
             font-size:13px;
+            margin-right:10px;
 
             &:hover {
                 background:#FFF;
@@ -72,23 +154,15 @@
         }
     }
 
-    &__branding {
+    &:after {
+        content:' ';
+        position:absolute;
+        right:10px;
+        top:18px;
         display:none;
-        text-align:center;
-
-        @media (min-width:$bp-max) {
-            display:table-cell;
+        @media (min-width:$bp-max + 600) {
+            display:block;
         }
-    }
-
-    &__control {
-        display:inline-block;
-        font-size:26px;
-        margin:0 5px;
-    }
-
-    &__logo {
-        display:inline-block;
         width:110px;
         height:15px;
         background:url("../img/logo.png") no-repeat left;

@@ -32,7 +32,13 @@
             ng-class="{'is-reduced': documentScroll > 0}">
             <a href class="header__burger fa fa-bars"
                 ng-click="toggleNav()"></a>
-            <a href="http://thebackpackerz.com" target="_blank" class="header__logo"></a>
+            <a href class="header__logo"
+                ng-click="backToTop()"></a>
+            <div class="header__shares" ng-controller="ShareCtrl">
+                <a href class="share share--facebook" ng-click="share('facebook')"></a>
+                <a href class="share share--twitter" ng-click="share('twitter')"></a>
+                <a href class="share share--google" ng-click="share('google')"></a>
+            </div>
         </header>
 
         <div class="container">
@@ -61,13 +67,13 @@
                 <section class="filters">
                     <a href class="filters__item button"
                         ng-class="{'is-active': groupBy == 'meta.albumrankcat'}"
-                        ng-click="setFilter('albumrankcat')">{{infos.meta.filtre_classement}}</a>
+                        ng-click="setFilter('albumrankcat', $event)">{{infos.meta.filtre_classement}}</a>
                     <a href class="filters__item button"
                         ng-class="{'is-active': groupBy == 'meta.albumyearcat'}"
-                        ng-click="setFilter('albumyearcat')">{{infos.meta.filtre_date}}</a>
+                        ng-click="setFilter('albumyearcat', $event)">{{infos.meta.filtre_date}}</a>
                     <a href class="filters__item button"
                         ng-class="{'is-active': groupBy == 'meta.albumstylecat'}"
-                        ng-click="setFilter('albumstylecat')">{{infos.meta.filtre_style}}</a>
+                        ng-click="setFilter('albumstylecat', $event)">{{infos.meta.filtre_style}}</a>
                 </section>
 
                 <section class="albums"
@@ -80,7 +86,7 @@
                         <li class="albums__item album js-album"
                             ng-repeat="(index, album) in cat | orderBy: ['-meta.albumrank.length', '-meta.albumrank']"
                             ng-class="{'is-active': album.slug == openedAlbum.slug, 'is-playing': isPlaying.slug == album.slug,  'is-loading': isLoading.slug == album.slug, 'is-fliping': albumSide == 'back', 'is-backfliping': albumSide == 'front'}"
-                            ng-click="openAlbum(album)">
+                            ng-click="openAlbum(album, $event)">
                             <img class="album__cover" ng-src="{{album.meta.albumcover.url}}" alt="{{album.title}}" />
                             <span class="album__rank">{{album.meta.albumrank}}</span>
                             <span class="album__readmore fa fa-plus"></span>
@@ -122,34 +128,34 @@
 
             <section class="player"
                 ng-show="isPlayerReady"
-                ng-class="{'is-active': documentScroll > documentHeight}">
+                ng-class="{'is-active': documentScroll > documentHeight && loadedAlbum}">
                 <div id="player"></div>
-                <div class="player__infos">
-                    <img ng-src="" class="player__infosCover" />
-                    <span class="player__infosTitle"></span>
-                    <span class="player__infosArtist"></span>
-                </div>
-                <div class="player__controls">
-                    <a href class="player__control fa fa-step-backward"></a>
-                    <a href class="player__control fa fa-play"
-                        ng-click="loadAlbumSample(currentAlbum)"
-                        ng-hide="isPlaying"></a>
-                    <a href class="player__control fa fa-pause"
-                        ng-click="pauseAlbumSample()"
-                        ng-show="isPlaying"></a>
-                    <a href class="player__control fa fa-step-forward"></a>
-                </div>
-                    <div class="player__progressbar">
-                        <div class="progressbar">
+                <div class="player__wrapper">
+                    <div class="player__infos">
+                        <img ng-src="{{loadedAlbum.meta.albumcover.url}}" class="player__infosCover" />
+                        <span class="player__infosTitle"
+                            ng-bind-html="loadedAlbum.meta.albumname"></span>
+                        <span class="player__infosArtist"
+                            ng-bind-html="loadedAlbum.meta.albumartist"></span>
+                    </div>
+                    <div class="player__controls">
+                        <!--<a href class="player__control fa fa-step-backward"></a>-->
+                        <a href class="player__control fa fa-play"
+                            ng-click="loadAlbumSample(currentAlbum)"
+                            ng-hide="isPlaying"></a>
+                        <a href class="player__control fa fa-pause"
+                            ng-click="pauseAlbumSample()"
+                            ng-show="isPlaying"></a>
+                        <!--<a href class="player__control fa fa-step-forward"></a>-->
+                        <div class="progressbar"
+                            ng-click="clickOnProgressBar($event)">
                             <div class="progressbar__complete"
                                 ng-style="{'width': playerProgression + '%'}"></div>
                         </div>
                     </div>
-                <div class="player__button">
-                    <a href class="button">Télécharger la mixtape</a>
-                </div>
-                <div class="player__branding">
-                    <span class="player__logo"></span>
+                    <div class="player__button">
+                        <a href class="button">Télécharger la mixtape</a>
+                    </div>
                 </div>
             </section>
 

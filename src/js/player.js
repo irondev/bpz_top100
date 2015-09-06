@@ -72,6 +72,12 @@ var playerStop = function () {
 	player.stopVideo();
 };
 
+var playerSeekTo = function (value) {
+    var duration = playerGetDuration();
+    var seekTo = duration * value / 100;
+    player.seekTo(seekTo);
+};
+
 (function() {
 	playerInit();
 })();

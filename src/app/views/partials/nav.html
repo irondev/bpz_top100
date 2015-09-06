@@ -1,4 +1,7 @@
 <ul class="nav__list">
+	<li class="nav__item nav__item--home">
+		<a href="/" target="_blank">Home</a>
+	</li>
 	<li class="nav__item nav__item--{{item.slug}}"
 		ng-repeat="(index, item) in nav">
 		<a ng-href="{{item.link}}" target="_blank" ng-bind-html="item.name | lowercase | ucfirst"></a>

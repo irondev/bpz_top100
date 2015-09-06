@@ -9,10 +9,11 @@
     }
 
     .paragraph {
-    	margin:0 0.9090909091%;
+    	margin:0 2.2727272727%;
     	@media (min-width:$bp-tablet) {
 	        column-count: 2;
 	        column-gap: 80px;
+            margin:0 0.9090909091%;
         }
     }
 

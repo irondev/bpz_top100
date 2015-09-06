@@ -8,7 +8,6 @@
 		$q.all([promiseInfos, promiseAlbums]).then(function(datas) {
 			$scope.infos = datas[0];console.log($scope.infos);
 			$scope.albums = datas[1];console.log($scope.albums);
-			$scope.currentAlbum = $scope.albums[0];
 			var imageToPreload = [];
 			imageToPreload.push($scope.infos.meta.coverimage.url);
 			/*for (var i = 0; i < $scope.albums.length; i++) {
@@ -31,14 +30,14 @@
 
 		$scope.groupBy = 'meta.albumrankcat';
 		$scope.groupOrderBy = '-meta.albumrankcat';
-		$scope.setFilter = function(filter) {
+		$scope.setFilter = function(filter, $event) {
 			$location.path('/filter/'+ filter);
+			jQuery("html, body").animate({scrollTop: jQuery($event.target).offset().top - 75}, 'slow');
 			$scope.groupBy = 'meta.' + filter;
 			$scope.groupOrderBy = ($scope.groupBy == 'meta.albumrankcat') ? '-meta.albumrankcat' : $scope.groupBy;
-			$scope.openedAlbum = null;
 		};
 
-		$scope.openAlbum = function(albumObj) {
+		$scope.openAlbum = function(albumObj, $event) {
 			$location.path('/album/'+ albumObj.slug);
 			$scope.openedAlbum = albumObj;
 		};
@@ -50,7 +49,6 @@
 				$scope.isLoading = $scope.loadedAlbum = $scope.openedAlbum = $scope.currentAlbum = albumObj;
 				playerLoadId($scope.loadedAlbum.meta.albumextract);				
 			}
-			console.log($scope.loadedAlbum);
 		};
 
 		$scope.playAlbumSample = function() {
@@ -72,6 +70,16 @@
 		$scope.unsetProgressBar = function() {
 		    $scope.playerProgression = 0;
 		    $interval.cancel(playerTimer);
+		};
+
+		$scope.clickOnProgressBar = function($event) {
+		    var clicPosition = $event.pageX;
+		    var $element = jQuery($event.currentTarget);
+		    var elementPosition = $element.offset().left;
+		    var elementSize = $element.width();
+		    var clicRelativePosition = clicPosition - elementPosition;
+		    var percentage = Math.round(clicRelativePosition * 100 / elementSize);
+		    playerSeekTo(percentage);
 		};
 
 	});

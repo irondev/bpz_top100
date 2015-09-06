@@ -31,7 +31,11 @@ var documentScroll = window.pageYOffset;
 		};
 
 		$scope.skipCover = function() {
-			window.scrollTo(0, documentHeight);
+			jQuery("html, body").animate({scrollTop:documentHeight - 55}, 'slow');
+		};
+
+		$scope.backToTop = function() {
+			jQuery("html, body").animate({scrollTop:0}, 'slow');
 		};
 		
 	}]);

@@ -2,14 +2,12 @@
     position:relative;
     overflow:hidden;
     text-align:center;
-    margin-bottom:0;
-    margin-top:55px;
+    margin-top:0;
+    margin-bottom:20px;
     @media (min-width:$bp-phone) {
-        margin-top:0;
         margin-bottom:20px;
     }
     @media (min-width:$bp-phablet) {
-        margin-top:0;
         margin-bottom:40px;
     }
 
@@ -37,22 +35,21 @@
     &__text {
         box-sizing:border-box;
         padding:0;
-
-        @media (min-width:$bp-phone) {
-            position:absolute;
-            z-index:1;
-            text-align:center;
-            width:100%;
-            bottom:25%;
-            left:0;
-            padding:0 1%;
-        }
+        position:absolute;
+        z-index:1;
+        text-align:center;
+        width:100%;
+        bottom:25%;
+        left:0;
+        padding:0 1%;
     }
 
     &__title {
         display:inline-block;
         max-width:680px;
-        color:$color-dark;
+        color:#FFF;
+        padding:20px;
+        text-shadow:2px 2px 5px #000;
         font-size:28px;
         font-weight:900;
         font-style:italic;
@@ -60,38 +57,33 @@
         border-left:none;
         border-right:none;
 
-        @media (min-width:$bp-phone) {
-            color:#FFF;
-            padding:20px;
-            text-shadow:2px 2px 5px #000;
-
-            &:before {
-                content:'REWIND';
-                position:absolute;
-                display:inline-block;
-                width:100px;
-                top:10px;
-                left:50%;
-                margin-left:-50px;
-                padding:8px;
-                padding-left:15px;
-                padding-right:15px;
-                font-size:30px;
-                font-weight:900;
-                font-style:normal;
-                background:#FFF;
-                color:$color-dark;
-                text-shadow:none;
-                transform:skewX(165deg);
-                box-shadow:0px 0px 10px $color-dark;
-            }
+        
+        &:before {
+            content:'REWIND';
+            position:absolute;
+            display:inline-block;
+            box-sizing:border-box;
+            width:100px;
+            top:0;
+            left:50%;
+            margin-left:-50px;
+            padding:8px 15px;
+            font-size:14px;
+            font-weight:900;
+            font-style:normal;
+            background:#FFF;
+            color:$color-dark;
+            text-shadow:none;
+            transform:skewX(165deg);
+            box-shadow:0px 0px 10px $color-dark;
         }
 
         @media (min-width:$bp-phablet) {
-            font-size:36px;
+            font-size:32px;
+            padding:30px 0;
             &:before {
-                top:3px;
-                font-size:25px;
+                top:5px;
+                font-size:16px;
             }
         }
 
@@ -99,40 +91,38 @@
             font-size:42px;
             padding:40px 0;
             &:before {
-                top:3px;
-                font-size:25px;
+                font-size:28px;
+                width:150px;
+                margin-left:-75px;
             }
         }
 
     }
 
     &__arrow {
-        display:none;
-        @media (min-width:$bp-phone) {
-            position:absolute;
-            z-index:1;
-            left:50%;
-            bottom:12.5%;
-            margin-left:-18px;
-            margin-top:18px;
-            display:inline-block;
-            width:32px;
-            height:32px;
-            border-radius:18px;
-            font-size:32px;
-            color:#FFF;
-            text-decoration:none;
-            border:2px solid #FFF;
-            opacity:1;
-            transition:opacity 0.5s;
-            animation-name:blink;
-            animation-duration:2s;
-            animation-iteration-count:infinite;
+        position:absolute;
+        z-index:1;
+        left:50%;
+        bottom:12.5%;
+        margin-left:-18px;
+        margin-top:18px;
+        display:inline-block;
+        width:32px;
+        height:32px;
+        border-radius:18px;
+        font-size:32px;
+        color:#FFF;
+        text-decoration:none;
+        border:2px solid #FFF;
+        opacity:1;
+        transition:opacity 0.5s;
+        animation-name:blink;
+        animation-duration:2s;
+        animation-iteration-count:infinite;
 
-            &:hover {
-                animation-play-state:paused;
-                opacity:1;
-            }
+        &:hover {
+            animation-play-state:paused;
+            opacity:1;
         }
     }
 }

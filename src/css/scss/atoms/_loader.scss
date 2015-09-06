@@ -1,15 +1,22 @@
 .loader {
     position:fixed;
     top:50%;
-    margin-top:-57px;
     left:50%;
-    margin-left:-191px;
     display:block;
-    width:382px;
-    height:114px;
+    width:191px;
+    height:57px;
+    margin-left:-95px;
+    margin-top:-28px;
     background:url('../img/loader-intro.gif') no-repeat;
-
+    background-size:100%;
     body.is-ready & {
         display:none;
+    }
+
+    @media (min-width:$bp-phone) {
+        width:382px;
+        height:114px;
+        margin-left:-191px;
+        margin-top:-57px;
     }
 }

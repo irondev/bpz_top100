@@ -146,6 +146,7 @@
         .album.is-fliping & {
             animation-name:backflip;
             transform:rotateY(0deg);
+            overflow:auto;
         }
 
         .album.is-backfliping & {

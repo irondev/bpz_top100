@@ -115,7 +115,7 @@
                             <div class="album__edito">
                                 <a href class="album__corner"
                                     ng-click="albumSide = 'front'"></a>
-                                <p class="paragraph">Vivamus accumsan semper purus eget auctor. Aliquam orci lorem, sagittis at massa quis, posuere pulvinar tellus. Sed nec dui eget arcu accumsan molestie. Nulla ac massa gravida, pellentesque lectus ac, facilisis ipsum. Morbi sit amet nulla lacus. Pellentesque hendrerit interdum lobortis. Curabitur ullamcorper purus nec ipsum molestie malesuada. Donec eget nibh interdum, scelerisque ligula ut, porttitor urna.</p>
+                                <p class="paragraph" ng-bind-html="album.content"></p>
                             </div>
                         </li>
                     </ul>

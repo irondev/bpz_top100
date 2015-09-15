@@ -148,12 +148,15 @@
         .album.is-fliping & {
             animation-name:backflip;
             transform:rotateY(0deg);
-            overflow:auto;
         }
 
         .album.is-backfliping & {
             animation-name:flip;
             transform:rotateY(-180deg);
+        }
+
+        .album.is-active.is-fliping & {
+            overflow:auto;
         }
     }
 
@@ -273,7 +276,7 @@
             width:200%;
             height:200%;
             background:#FFF;
-            opacity:0.5;
+            opacity:1;
             transform:rotate(45deg);
             transition:all linear 0.1s;
         }
@@ -289,10 +292,10 @@
             transition:all linear 0.1s;
 
             .album__infos & {
-                content:'\f065';
+                content:'\f0e2';
             }
             .album__edito & {
-                content:'\f066';
+                content:'\f00d';
             }
         }
 
@@ -300,7 +303,6 @@
             &:before {
                 top:-120%;
                 right:-120%;
-                opacity:1;
             }
             &:after {
                 top:5px;

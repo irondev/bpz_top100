@@ -4,6 +4,8 @@ module.exports = function(grunt) {
 
     var env = grunt.option('env') || "dev";
 
+    var assetsPath = (env == 'dev') ? './' : '/special/guide/';
+
     console.log(" ");
 
     grunt.initConfig({
@@ -76,20 +78,46 @@ module.exports = function(grunt) {
             }
         },
 
+        processhtml: {
+            default: {
+                options: {
+                    data: {
+                        assetsPath: assetsPath,
+                        timestamp: timestamp,
+                        env: env
+                    }
+                },
+                files: [{
+                    expand: true,
+                    cwd: 'src',
+                    src: ['index.html'],
+                    dest: 'dist'
+                }]
+            }
+        },
+
         watch: {
             options: {
                 livereload: false,
             },
             css: {
-                files: ['src/css/scss/*.scss', 'src/css/scss/**/*.scss'],
+                files: ['src/css/scss/**/*.scss'],
                 tasks: ['css']
             },
             js: {
-                files: ['src/app/*.js', 'src/app/**/*.js', 'src/js/*.js'],
+                files: ['src/app/**/*.js', 'src/js/*.js'],
                 tasks: ['js']
             },
             html: {
-                files: ['src/**', 'src/**/*', '!**/*.scss', '!**/*.js'],
+                files: ['src/**/*.html'],
+                tasks: ['html']
+            },
+            json: {
+                files: ['src/**/*.json'],
+                tasks: ['html']
+            },
+            img: {
+                files: ['src/**/*.(jpg|png|gif)'],
                 tasks: ['html']
             }
         },
@@ -100,7 +128,9 @@ module.exports = function(grunt) {
                     src : [
                         'dist/css/*.css',
                         'dist/js/*.js',
-                        'dist/**', 'dist/**/*'
+                        'dist/**/*.html',
+                        'dist/**/*.json',
+                        'dist/**/*.(jpg|png|gif)'
                     ]
                 },
                 options: {
@@ -130,11 +160,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-autoprefixer');
+    grunt.loadNpmTasks('grunt-processhtml');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-browser-sync');
     grunt.loadNpmTasks('grunt-ftp-deploy');
 
-    grunt.registerTask('html', ['copy']);
+    grunt.registerTask('html', ['copy', 'processhtml']);
     grunt.registerTask('css', ['sass', 'autoprefixer']);
     grunt.registerTask('js', ['concat']);
 

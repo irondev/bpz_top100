@@ -18,10 +18,12 @@
         <meta name="twitter:site" content="@TheBackPackerz" />
         <meta name="twitter:creator" content="@TheBackPackerz" />
         <link rel="shortcut icon" type="image/x-icon" href="http://thebackpackerz.com/wp-content/uploads/2015/05/favicon-the-backpackerz-blog-hip-hop.gif" />
-        <link href="css/style.min.css" rel="stylesheet" type="text/css">
+        <!-- build:template
+        <link href="<%=assetsPath%>css/style.min.css?<%=timestamp%>" rel="stylesheet" type="text/css">
         <!--[if lte IE 9]>
-        <link rel="stylesheet" type="text/css" href="css/ie.css" />
+        <link rel="stylesheet" type="text/css" href="<%=assetsPath%>css/ie.css" />
         <![endif]-->
+        /build -->
     </head>
     <body 
         ng-class="{'is-ready': appReady, 'is-navigating': isNavigating}">
@@ -83,10 +85,11 @@
                         <div class="albums__caption">
                             <span class="albums__captionLabel">{{key}}</span>
                         </div>
-                        <li class="albums__item album js-album"
+                        <li id="{{album.slug}}" class="albums__item album js-album"
                             ng-repeat="(index, album) in cat | orderBy: ['-meta.albumrank.length', '-meta.albumrank']"
-                            ng-class="{'is-active': album.slug == openedAlbum.slug, 'is-playing': isPlaying.slug == album.slug,  'is-loading': isLoading.slug == album.slug, 'is-fliping': albumSide == 'back', 'is-backfliping': albumSide == 'front'}"
-                            ng-click="openAlbum(album, $event)">
+                            ng-class="{'is-active': album.slug == openedAlbum.slug, 'is-playing': isPlaying.slug == album.slug, 'is-loading': isLoading.slug == album.slug, 'is-fliping': albumSide == 'back', 'is-backfliping': albumSide == 'front'}"
+                            ng-click="openAlbum(album)"
+                            data-album="{{album | json}}">
                             <img class="album__cover" ng-src="{{album.meta.albumcover.url}}" alt="{{album.title}}" />
                             <span class="album__rank">{{album.meta.albumrank}}</span>
                             <span class="album__readmore fa fa-plus"></span>
@@ -97,6 +100,8 @@
                                     ng-bind-html="album.meta.albumname"></span>
                                 <span class="album__artist"
                                     ng-bind-html="album.meta.albumartist"></span>
+                                <span class="album__year"
+                                    ng-bind-html="album.meta.albumyear"></span>
                                 <a href class="album__play fa fa-play"
                                     ng-if="isPlaying.slug != album.slug && isLoading.slug != album.slug"
                                     ng-click="loadAlbumSample(album)"></a>
@@ -109,8 +114,6 @@
                                     ng-bind-html="album.meta.albumstylecat"></span>
                                 <span class="album__label"
                                     ng-bind-html="album.meta.albumlabel"></span>
-                                <span class="album__year"
-                                    ng-bind-html="album.meta.albumyear"></span>
                             </div>
                             <div class="album__edito">
                                 <a href class="album__corner"
@@ -131,22 +134,24 @@
                 ng-class="{'is-active': documentScroll > documentHeight && loadedAlbum}">
                 <div id="player"></div>
                 <div class="player__wrapper">
-                    <div class="player__infos">
+                    <div class="player__infos"
+                        ng-style="{'visibility':loadedAlbum ? 'visible' : 'hidden'}"
+                        ng-click="openLoadedAlbum()">
                         <img ng-src="{{loadedAlbum.meta.albumcover.url}}" class="player__infosCover" />
                         <span class="player__infosTitle"
-                            ng-bind-html="loadedAlbum.meta.albumname"></span>
+                            ng-bind-html="loadedAlbum.meta.albumextracttitle"></span>
                         <span class="player__infosArtist"
                             ng-bind-html="loadedAlbum.meta.albumartist"></span>
                     </div>
                     <div class="player__controls">
-                        <!--<a href class="player__control fa fa-step-backward"></a>-->
                         <a href class="player__control fa fa-play"
-                            ng-click="loadAlbumSample(currentAlbum)"
+                            ng-click="loadAlbumSample(loadedAlbum)"
                             ng-hide="isPlaying"></a>
                         <a href class="player__control fa fa-pause"
                             ng-click="pauseAlbumSample()"
                             ng-show="isPlaying"></a>
-                        <!--<a href class="player__control fa fa-step-forward"></a>-->
+                        <a href class="player__control fa fa-step-forward"
+                            ng-click="nextAlbumSample()"></a>
                         <div class="progressbar"
                             ng-click="clickOnProgressBar($event)">
                             <div class="progressbar__complete"
@@ -167,8 +172,10 @@
             <![endif]-->
         </div>
 
-        <script src="js/vendors.min.js"></script>
-        <script src="js/player.js"></script>
-        <script src="js/app.js"></script>
+        <!-- build:template
+        <script src="<%=assetsPath%>js/vendors.min.js"></script>
+        <script src="<%=assetsPath%>js/player.js?<%=timestamp%>"></script>
+        <script src="<%=assetsPath%>js/app.js?<%=timestamp%>"></script>
+        /build -->
     </body>
 </html>

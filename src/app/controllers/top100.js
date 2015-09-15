@@ -37,22 +37,40 @@
 			$scope.groupOrderBy = ($scope.groupBy == 'meta.albumrankcat') ? '-meta.albumrankcat' : $scope.groupBy;
 		};
 
-		$scope.openAlbum = function(albumObj, $event) {
+		$scope.openAlbum = function(albumObj) {
 			$location.path('/album/'+ albumObj.slug);
 			$scope.openedAlbum = albumObj;
 		};
 
+		$scope.openLoadedAlbum = function() {
+			$location.path('/album/'+ $scope.loadedAlbum.slug);
+			jQuery("html, body").animate({scrollTop: jQuery("#"+ $scope.loadedAlbum.slug).offset().top - 75}, 'slow');
+			$scope.openedAlbum = $scope.loadedAlbum;
+		};
+
 		$scope.loadAlbumSample = function(albumObj) {
+			if (!$scope.loadedAlbum && !albumObj) {
+				var albumObj = jQuery(".js-album:first").data("album");
+			}
 			if ($scope.loadedAlbum && $scope.loadedAlbum.slug == albumObj.slug) {
-				$scope.playAlbumSample();
+				playerPlay();
 			} else {
-				$scope.isLoading = $scope.loadedAlbum = $scope.openedAlbum = $scope.currentAlbum = albumObj;
-				playerLoadId($scope.loadedAlbum.meta.albumextract);				
+				$scope.isLoading = $scope.loadedAlbum = $scope.openedAlbum = albumObj;
+				playerLoadId(albumObj.meta.albumextract);				
 			}
 		};
 
-		$scope.playAlbumSample = function() {
-			playerPlay();
+		$scope.nextAlbumSample = function() {
+			var index = ($scope.loadedAlbum) ? jQuery("#"+ $scope.loadedAlbum.slug).index(".js-album") : 0;
+			var $nextAlbum = jQuery(".js-album:eq("+ (index + 1) +")");
+			if ($nextAlbum.length) {
+				var albumObj = $nextAlbum.data("album");
+				$scope.isLoading = $scope.loadedAlbum = $scope.openedAlbum = albumObj;
+				playerLoadId(albumObj.meta.albumextract);
+			} else {
+				$scope.loadedAlbum = null;
+				$scope.unsetProgressBar();
+			}
 		};
 
 		$scope.pauseAlbumSample = function() {
@@ -68,8 +86,8 @@
 		};
 
 		$scope.unsetProgressBar = function() {
-		    $scope.playerProgression = 0;
 		    $interval.cancel(playerTimer);
+		    $scope.playerProgression = 0;
 		};
 
 		$scope.clickOnProgressBar = function($event) {

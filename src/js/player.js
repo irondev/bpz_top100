@@ -23,20 +23,20 @@ var onYouTubeIframeAPIReady = function () {
                 switch (event.data) {
                     case YT.PlayerState.PLAYING:
                         $scope.isLoading = false;
-                        $scope.isPlaying = $scope.currentAlbum;
+                        $scope.isPlaying = $scope.loadedAlbum;
                         $scope.isPausing = false;
                         $scope.setProgressBar();
                     break;
                     case YT.PlayerState.PAUSED:
                         $scope.isLoading = false;
                         $scope.isPlaying = false;
-                        $scope.isPausing = $scope.currentAlbum;
+                        $scope.isPausing = $scope.loadedAlbum;
                     break;
                     case YT.PlayerState.ENDED:
                         $scope.isLoading = false;
                         $scope.isPlaying = false;
                         $scope.isPausing = false;
-                        $scope.unsetProgressBar();
+                        $scope.nextAlbumSample();
                     break;
                 }
             }

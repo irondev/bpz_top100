@@ -31,19 +31,19 @@
 		$scope.groupBy = 'meta.albumrankcat';
 		$scope.groupOrderBy = '-meta.albumrankcat';
 		$scope.setFilter = function(filter, $event) {
-			$location.path('/filter/'+ filter);
+			//$location.path('/filter/'+ filter);
 			jQuery("html, body").animate({scrollTop: jQuery($event.target).offset().top - 75}, 'slow');
 			$scope.groupBy = 'meta.' + filter;
 			$scope.groupOrderBy = ($scope.groupBy == 'meta.albumrankcat') ? '-meta.albumrankcat' : $scope.groupBy;
 		};
 
 		$scope.openAlbum = function(albumObj) {
-			$location.path('/album/'+ albumObj.slug);
+			//$location.path('/album/'+ albumObj.slug);
 			$scope.openedAlbum = albumObj;
 		};
 
 		$scope.openLoadedAlbum = function() {
-			$location.path('/album/'+ $scope.loadedAlbum.slug);
+			//$location.path('/album/'+ $scope.loadedAlbum.slug);
 			jQuery("html, body").animate({scrollTop: jQuery("#"+ $scope.loadedAlbum.slug).offset().top - 75}, 'slow');
 			$scope.openedAlbum = $scope.loadedAlbum;
 		};

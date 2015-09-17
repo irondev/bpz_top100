@@ -3,13 +3,13 @@
 <p class="paragraph paragraph--oneline">Si vous avez aimé cette expérience, parlez en autour de vous...</p>
 
 <div class="footer__shares">
-	<div class="share">
+	<div class="share" onclick="ga('send', 'event', 'share', 'click', 'footer buttons')">
 		<div class="fb-share-button" data-href="http://thebackpackerz.com/rewind-les-100-meilleurs-albums-de-rap-us-depuis-2000" data-layout="button_count"></div>
 	</div>
-	<div class="share">
+	<div class="share" onclick="ga('send', 'event', 'share', 'click', 'footer buttons')">
 		<a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Les+100+meilleurs+albums+de+Rap+US+depuis+2000&url=http%3A%2F%2Fthebackpackerz.com%2Frewind-les-100-meilleurs-albums-de-rap-us-depuis-2000&via=TheBackPackerz">Tweet</a>
 	</div>
-	<div class="share">
+	<div class="share" onclick="ga('send', 'event', 'share', 'click', 'footer buttons')">
 		<div class="g-plusone" data-href="http://thebackpackerz.com/rewind-les-100-meilleurs-albums-de-rap-us-depuis-2000" data-size="medium"></div>
 	</div>
 </div>
@@ -17,23 +17,23 @@
 <h4 class="heading heading--2">Ne partez pas les mains vides !</h3>
 <div class="footer__flyer">
 	<p class="paragraph paragraph--oneline">Télécharger la mixtape REWIND qui retrace ce classement à travers une sélection de 100 morceaux.</p>
-	<a href="#">
+	<a href="#" onclick="ga('send', 'event', 'download', 'click', 'footer buttons')">
 		<!-- build:template
 		<img src="<%=assetsPath%>img/cover-mixtape.png" alt="mixtape REWIND - les 100 meilleurs albums de rap US depuis 2000" />
 		/build -->
 	</a>
-	<a href="#" class="button button--important">Télécharger la mixtape</a>
+	<a href="#" onclick="ga('send', 'event', 'download', 'click', 'footer buttons')" class="button button--important">Télécharger la mixtape</a>
 </div>
 
 <h4 class="heading heading--2">Et RDV au Batofar le 24 Septembre</h3>
 <div class="footer__flyer">
 	<p class="paragraph paragraph--oneline">Pour une soirée dédiée à ce classement des 100 classiques de Rap US post-2000</p>
-	<a href="https://www.facebook.com/events/946097012120191/" target="_blank">
+	<a href="https://www.facebook.com/events/946097012120191/" onclick="ga('send', 'event', 'goToEvent', 'click', 'footer buttons')" target="_blank">
 		<!-- build:template
 		<img src="<%=assetsPath%>img/flyer-aperoboat2.png" alt="aperoboat REWIND - les 100 meilleurs albums de rap US depuis 2000" />
 		/build -->
 	</a>
-	<a href="https://www.facebook.com/events/946097012120191/" target="_blank" class="button">En savoir plus</a>
+	<a href="https://www.facebook.com/events/946097012120191/" onclick="ga('send', 'event', 'goToEvent', 'click', 'footer buttons')" target="_blank" class="button">En savoir plus</a>
 </div>
 
 <div class="footer__credits">

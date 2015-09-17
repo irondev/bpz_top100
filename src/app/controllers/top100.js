@@ -31,15 +31,23 @@
 		$scope.groupBy = 'meta.albumrankcat';
 		$scope.groupOrderBy = '-meta.albumrankcat';
 		$scope.setFilter = function(filter, $event) {
+			if ('meta.' + filter == $scope.groupBy)
+				return false;
 			//$location.path('/filter/'+ filter);
 			jQuery("html, body").animate({scrollTop: jQuery($event.target).offset().top - 75}, 'slow');
 			$scope.groupBy = 'meta.' + filter;
 			$scope.groupOrderBy = ($scope.groupBy == 'meta.albumrankcat') ? '-meta.albumrankcat' : $scope.groupBy;
+			ga('set', 'page', '/filter/'+ filter);
+			ga('send', 'pageview');
 		};
 
 		$scope.openAlbum = function(albumObj) {
+			if ($scope.openedAlbum && $scope.openedAlbum.slug == albumObj.slug)
+				return false;
 			//$location.path('/album/'+ albumObj.slug);
 			$scope.openedAlbum = albumObj;
+			ga('set', 'page', '/album/'+ albumObj.slug);
+			ga('send', 'pageview');
 		};
 
 		$scope.openLoadedAlbum = function() {

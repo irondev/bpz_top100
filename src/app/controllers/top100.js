@@ -69,9 +69,7 @@
 				playerLoadId(albumObj.meta.albumextract);
 				ga('set', 'page', location.pathname + '/album/'+ albumObj.slug);
 				ga('send', 'pageview');
-			} else {
-				$scope.loadedAlbum = null;
-				$scope.unsetProgressBar();
+				ga('send', 'event', 'autoplay', 'auto', 'cover buttons')
 			}
 		};
 

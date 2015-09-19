@@ -68,13 +68,13 @@
                 </div>
 
                 <section class="filters">
-                    <a href class="filters__item button"
+                    <a href class="filters__item button" onclick="ga('send', 'event', 'filter', 'click', 'filter buttons', 'albumrankcat')"
                         ng-class="{'is-active': groupBy == 'meta.albumrankcat'}"
                         ng-click="setFilter('albumrankcat', $event)">{{infos.meta.filtre_classement}}</a>
-                    <a href class="filters__item button"
+                    <a href class="filters__item button" onclick="ga('send', 'event', 'filter', 'click', 'filter buttons', 'albumyearcat')"
                         ng-class="{'is-active': groupBy == 'meta.albumyearcat'}"
                         ng-click="setFilter('albumyearcat', $event)">{{infos.meta.filtre_date}}</a>
-                    <a href class="filters__item button"
+                    <a href class="filters__item button" onclick="ga('send', 'event', 'filter', 'click', 'filter buttons', 'albumstylecat')"
                         ng-class="{'is-active': groupBy == 'meta.albumstylecat'}"
                         ng-click="setFilter('albumstylecat', $event)">{{infos.meta.filtre_style}}</a>
                 </section>

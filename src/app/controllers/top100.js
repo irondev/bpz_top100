@@ -6,13 +6,10 @@
 		var promiseInfos = $datas.getInfos();
 		var promiseAlbums = $datas.getAlbums();
 		$q.all([promiseInfos, promiseAlbums]).then(function(datas) {
-			$scope.infos = datas[0];console.log($scope.infos);
-			$scope.albums = datas[1];console.log($scope.albums);
+			$scope.infos = datas[0];
+			$scope.albums = datas[1];
 			var imageToPreload = [];
 			imageToPreload.push($scope.infos.meta.coverimage.url);
-			/*for (var i = 0; i < $scope.albums.length; i++) {
-				imageToPreload.push($scope.albums[i].meta.albumcover.url);
-			}*/
 			$imageCache.Cache(imageToPreload).then(function() {
 				var now = new Date();
 				var loadingTime = now - startTime;
@@ -33,25 +30,20 @@
 		$scope.setFilter = function(filter, $event) {
 			if ('meta.' + filter == $scope.groupBy)
 				return false;
-			//$location.path('/filter/'+ filter);
 			jQuery("html, body").animate({scrollTop: jQuery($event.target).offset().top - 75}, 'slow');
 			$scope.groupBy = 'meta.' + filter;
 			$scope.groupOrderBy = ($scope.groupBy == 'meta.albumrankcat') ? '-meta.albumrankcat' : $scope.groupBy;
-			ga('set', 'page', '/filter/'+ filter);
-			ga('send', 'pageview');
 		};
 
 		$scope.openAlbum = function(albumObj) {
 			if ($scope.openedAlbum && $scope.openedAlbum.slug == albumObj.slug)
 				return false;
-			//$location.path('/album/'+ albumObj.slug);
 			$scope.openedAlbum = albumObj;
-			ga('set', 'page', '/album/'+ albumObj.slug);
+			ga('set', 'page', document.location.href + 'album/'+ albumObj.slug);
 			ga('send', 'pageview');
 		};
 
 		$scope.openLoadedAlbum = function() {
-			//$location.path('/album/'+ $scope.loadedAlbum.slug);
 			jQuery("html, body").animate({scrollTop: jQuery("#"+ $scope.loadedAlbum.slug).offset().top - 75}, 'slow');
 			$scope.openedAlbum = $scope.loadedAlbum;
 		};

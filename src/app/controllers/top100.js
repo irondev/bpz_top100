@@ -78,6 +78,7 @@
 		};
 
 		$scope.setProgressBar = function() {
+			$interval.cancel(playerTimer);
 		    playerTimer = $interval(function() {
 		        var duration = playerGetDuration();
 		        var currentTime = playerGetCurrentTime();

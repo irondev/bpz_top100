@@ -36,6 +36,7 @@ var onYouTubeIframeAPIReady = function () {
                         $scope.isLoading = false;
                         $scope.isPlaying = false;
                         $scope.isPausing = false;
+                        $scope.unsetProgressBar();
                         $scope.nextAlbumSample();
                     break;
                 }

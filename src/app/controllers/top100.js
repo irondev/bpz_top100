@@ -67,6 +67,8 @@
 				var albumObj = $nextAlbum.data("album");
 				$scope.isLoading = $scope.loadedAlbum = $scope.openedAlbum = albumObj;
 				playerLoadId(albumObj.meta.albumextract);
+				ga('set', 'page', location.pathname + '/album/'+ albumObj.slug);
+				ga('send', 'pageview');
 			} else {
 				$scope.loadedAlbum = null;
 				$scope.unsetProgressBar();

@@ -39,7 +39,7 @@
 			if ($scope.openedAlbum && $scope.openedAlbum.slug == albumObj.slug)
 				return false;
 			$scope.openedAlbum = albumObj;
-			ga('set', 'page', document.location.href + 'album/'+ albumObj.slug);
+			ga('set', 'page', location.pathname + '/album/'+ albumObj.slug);
 			ga('send', 'pageview');
 		};
 

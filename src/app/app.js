@@ -12,14 +12,14 @@ var documentScroll = window.pageYOffset;
 		$scope.config = config;
 
 		$scope.documentHeight = documentHeight;
-		angular.element(window).bind('resize', function(e) {
+		angular.element(window).bind('resize', function() {
 		    documentHeight = document.documentElement.clientHeight;
 		    $scope.documentHeight = documentHeight;
 		    $scope.$apply();
 		});
 
 		$scope.documentScroll = documentScroll;
-		angular.element(window).bind('scroll', function(e) {
+		angular.element(window).bind('scroll', function() {
 		    documentScroll = window.pageYOffset;
 		    $scope.documentScroll = documentScroll;
 		    $scope.$apply();
@@ -34,8 +34,11 @@ var documentScroll = window.pageYOffset;
 			jQuery("html, body").animate({scrollTop:documentHeight - 55}, 'slow');
 		};
 
-		$scope.backToTop = function() {
-			jQuery("html, body").animate({scrollTop:0}, 'slow');
+		$scope.backToTop = function($event) {
+			if (documentScroll > 0) {
+				jQuery("html, body").animate({scrollTop:0}, 'slow');
+				$event.preventDefault();
+			}	
 		};
 		
 	}]);

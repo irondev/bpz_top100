@@ -35,8 +35,8 @@
             ng-class="{'is-reduced': documentScroll > 0}">
             <a href class="header__burger fa fa-bars" onclick="ga('send', 'event', 'burger', 'click', 'header buttons')"
                 ng-click="toggleNav()"></a>
-            <a href class="header__logo" onclick="ga('send', 'event', 'logo', 'click', 'header buttons')"
-                ng-click="backToTop()"></a>
+            <a href="http://thebackpackerz.com" target="_blank" class="header__logo" onclick="ga('send', 'event', 'logo', 'click', 'header buttons')"
+                ng-click="backToTop($event)"></a>
             <div class="header__shares" ng-controller="ShareCtrl">
                 <a href class="share share--facebook" onclick="ga('send', 'event', 'share', 'click', 'header buttons')" ng-click="share('facebook')"></a>
                 <a href class="share share--twitter" onclick="ga('send', 'event', 'share', 'click', 'header buttons')" ng-click="share('twitter')"></a>

@@ -59,7 +59,7 @@
 
         
         &:before {
-            content:'REWIND';
+            content:'Rewind';
             position:absolute;
             display:inline-block;
             box-sizing:border-box;
@@ -69,6 +69,7 @@
             margin-left:-50px;
             padding:8px 15px;
             font-size:14px;
+            text-transform:uppercase;
             font-weight:900;
             font-style:normal;
             background:#FFF;
@@ -123,6 +124,24 @@
         &:hover {
             animation-play-state:paused;
             opacity:1;
+        }
+
+        &:after {
+            content:"Démarrer l'expérience";
+            position:fixed;
+            width:100%;
+            left:0;
+            margin-top:20px;
+            display:block;
+            white-space:nowrap;
+            font-family:'Roboto';
+            font-weight:500;
+            font-size:14px;
+            text-transform:uppercase;
+
+            @media (min-width:$bp-phablet) {
+                font-size:16px;
+            }
         }
     }
 }

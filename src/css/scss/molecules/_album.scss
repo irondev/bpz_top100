@@ -271,8 +271,8 @@
             content:' ';
             display:block;
             position:absolute;
-            top:-135%;
-            right:-135%;
+            top:-125%;
+            right:-125%;
             width:200%;
             height:200%;
             background:#FFF;
@@ -284,18 +284,18 @@
         &:after {
             position:absolute;
             display:block;
-            top:3px;
-            right:3px;
+            top:4px;
+            right:4px;
             font-family:'FontAwesome';
-            font-size:13px;
+            font-size:17px;
             color:$color-dark;
             transition:all linear 0.1s;
 
             .album__infos & {
-                content:'\f0e2';
+                content:'\f055';
             }
             .album__edito & {
-                content:'\f00d';
+                content:'\f057';
             }
         }
 
@@ -307,7 +307,7 @@
             &:after {
                 top:5px;
                 right:5px;
-                font-size:16px;
+                font-size:18px;
                 color:$color-red;
             }
         }

@@ -1,7 +1,6 @@
 .footer {
     border-top:1px solid $color-dark;
     padding-top:40px;
-    margin-bottom:60px;
     text-align:center;
 
     .heading {
@@ -10,6 +9,13 @@
 
     .paragraph {
         margin-bottom:20px;
+
+        a {
+            color:#000;
+            &:hover {
+                text-decoration:none;
+            }
+        }
     }
 
     &__shares {
@@ -43,6 +49,10 @@
         .button {
             margin-top:20px;
         }
+    }
+
+    &__credits {
+        margin-bottom:40px;
     }
 
 }

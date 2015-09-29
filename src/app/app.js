@@ -5,6 +5,10 @@ var documentScroll = window.pageYOffset;
 (function() {
 	
 	app = angular.module('app', ['ngSanitize', 'angular.filter']);
+
+	app.config(['$compileProvider', function($compileProvider) {
+		$compileProvider.debugInfoEnabled(true);
+	}]);
 	
 	app.run(['$rootScope', function($scope, $rootScope) {
 

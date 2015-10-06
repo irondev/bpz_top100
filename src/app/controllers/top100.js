@@ -20,6 +20,10 @@
 				} else {
 					$scope.appReady = true;
 				}
+			}, function() {
+				$timeout(function() {
+					$rootScope.appReady = true;
+				}, (config.loaderMinTime));
 			});
 		}, function(r) {
 			console.error(r);

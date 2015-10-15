@@ -38,3 +38,28 @@ window.twttr = (function(d, s, id) {
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 ga('create', 'UA-47284909-1', 'thebackpackerz.com');
 ga('send', 'pageview');
+(function() {
+
+  var _fbq = window._fbq || (window._fbq = []);
+
+  if (!_fbq.loaded) {
+
+    var fbds = document.createElement('script');
+
+    fbds.async = true;
+
+    fbds.src = '//connect.facebook.net/en_US/fbds.js';
+
+    var s = document.getElementsByTagName('script')[0];
+
+    s.parentNode.insertBefore(fbds, s);
+
+    _fbq.loaded = true;
+
+  }
+
+})();
+
+window._fbq = window._fbq || [];
+
+window._fbq.push(['track', '6030419604741', {'value':'0.00','currency':'EUR'}]);

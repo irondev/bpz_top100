@@ -31,4 +31,18 @@
             background:rgba($color-red, 0.9);
         }
     }
+
+    &--secondary {
+        background:$color-light;
+        color:#FFF;
+        border:none;
+        text-transform:initial;
+        font-weight:700;
+        font-size:16px;
+        margin-top: 10px;
+
+        &:hover {
+            background:rgba($color-light, 0.8);
+        }
+    }
 }

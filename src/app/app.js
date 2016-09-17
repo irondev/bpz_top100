@@ -1,6 +1,7 @@
 var app;
 var documentHeight = document.documentElement.clientHeight;
 var documentScroll = window.pageYOffset;
+var top100Id = document.body.attributes['data-top100Id'].value;console.log("top100Id:", top100Id);
 
 (function() {
 	
@@ -14,6 +15,7 @@ var documentScroll = window.pageYOffset;
 
 		$scope.appReady = false;
 		$scope.config = config;
+		$scope.top100Id = top100Id;
 
 		$scope.documentHeight = documentHeight;
 		angular.element(window).bind('resize', function() {

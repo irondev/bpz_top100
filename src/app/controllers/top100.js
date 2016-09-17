@@ -3,13 +3,16 @@
 	app.controller('Top100Ctrl', function($scope, $rootScope, $filter, $location, $window, $document, $timeout, $interval, $q, $datas, $imageCache) {
 
 		var startTime = new Date();
-		var promiseInfos = $datas.getInfos();
 		var promiseAlbums = $datas.getAlbums();
-		$q.all([promiseInfos, promiseAlbums]).then(function(datas) {
-			$scope.infos = datas[0];
-			$scope.albums = datas[1];
+		$q.all([promiseAlbums]).then(function(datasOrg) {
+			datas = datasOrg[0];
+			datas.reverse();
+			$scope.infos = datas[0];console.log("rewind:", $scope.infos);
+			datas.splice(0, 1);
+			$scope.albums = datas;console.log("albums:", $scope.albums);
+
 			var imageToPreload = [];
-			imageToPreload.push($scope.infos.meta.coverimage.url);
+			imageToPreload.push($scope.infos.meta.albumcover.url);
 			$imageCache.Cache(imageToPreload).then(function() {
 				var now = new Date();
 				var loadingTime = now - startTime;

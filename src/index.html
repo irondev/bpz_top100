@@ -1,23 +1,28 @@
-<!doctype html>
+<!DOCTYPE html>
+<!--#if expr="$QUERY_STRING = /top100Id=([^\&]+)/" -->
+    <!--#set var="top100Id" value="$1" -->
+    <!--#include virtual="/special/rewind/ssi/default.ssi.html" -->
+    <!--#include virtual="/special/rewind/ssi/${top100Id}.ssi.html" -->
+<!--#endif -->
 <html class="no-js" lang="fr" ng-app="app" ng-controller="Top100Ctrl">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Les 100 meilleurs albums de Rap US depuis 2000 - The Backpackerz</title>
-        <meta name="description" content="Écoutez les meilleurs sons de chaque album de notre classement, découvrez leur mini chronique associée, classez-les selon vos critères, partagez-les, et emportez avec vous un souvenir de cette expérience en téléchargeant notre mixtape en quatre volumes">
+        <title><!--#echo encoding='none' var='title' --><!--#echo encoding='none' var='title_suffix' --></title>
+        <meta name="description" content="<!--#echo encoding='none' var='description' -->">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta property="og:type" content="article" />
         <meta property="og:locale" content="fr_FR" />
         <meta property="og:site_name" content="The Backpackerz"/>
-        <meta property="og:title" content="Les 100 meilleurs albums de Rap US depuis 2000" />
-        <meta property="og:url" content="http://thebackpackerz.com/rewind-les-100-meilleurs-albums-de-rap-us-depuis-2000" />
-        <meta property="og:description" content="Une expérience web unique made in The Backpackerz, pour revoir ses classiques." />
-        <meta property="og:image" content="http://thebackpackerz.com/wp-content/uploads/2015/07/top-100-rap2K-cover-v3.png" />
+        <meta property="og:title" content="<!--#echo encoding='none' var='ogtitle' -->" />
+        <meta property="og:url" content="<!--#echo encoding='none' var='ogtitle' -->" />
+        <meta property="og:description" content="<!--#echo encoding='none' var='ogdescription' -->" />
+        <meta property="og:image" content="<!--#echo encoding='none' var='ogimage' -->" />
         <meta property="article:publisher" content="https://www.facebook.com/TheBackPackerzOfficial" />
         <meta property="article:author" content="https://www.facebook.com/TheBackPackerzOfficial" />
         <meta name="twitter:site" content="@TheBackPackerz" />
         <meta name="twitter:creator" content="@TheBackPackerz" />
-        <link rel="canonical" href="http://thebackpackerz.com/rewind-les-100-meilleurs-albums-de-rap-us-depuis-2000" />
+        <link rel="canonical" href="<!--#echo encoding='none' var='url' -->" />
         <link rel="shortcut icon" type="image/x-icon" href="http://thebackpackerz.com/wp-content/uploads/2015/05/favicon-the-backpackerz-blog-hip-hop.gif" />
         <!-- build:template
         <link href="<%=assetsPath%>css/style.min.css?<%=timestamp%>" rel="stylesheet" type="text/css">
@@ -28,6 +33,12 @@
     </head>
     <body 
         ng-class="{'is-ready': appReady, 'is-navigating': isNavigating}">
+    <!-- build:template
+    <body class="timeline"
+        ng-class="{'in-app': (inApp), 'is-ready': (appReady), 'is-navigating': isNavigating}"
+        <% if (env == 'dev') { %>data-top100Id="les-100-meilleurs-albums-de-rap-us-depuis-2000"
+        <% } else { %>data-top100Id="<!--#echo var='top100Id' -->"<% } %>>
+    /build -->
 
         <nav class="nav"></nav>
 
@@ -49,9 +60,9 @@
             <section class="cover"
                 ng-style="{'height':documentHeight + 'px'}">
                 <div class="cover__image"
-                    ng-style="{'background-image':'url(' + infos.meta.coverimage.url + ')'}"></div>
+                    ng-style="{'background-image':'url(' + infos.meta.albumcover.url + ')'}"></div>
                 <div class="cover__text">
-                    <h1 class="cover__title">{{infos.meta.covertitle}}</h1>
+                    <h1 class="cover__title">{{infos.title}}</h1>
                 </div>
                 <a href class="cover__arrow fa fa-angle-down" onclick="ga('send', 'event', 'skipintro', 'click', 'header buttons')"
                     ng-click="skipCover()"
@@ -61,8 +72,8 @@
             <div class="layout">
 
                 <div class="intro">
-                    <div class="overheading"><span class="overheading__label">{{infos.meta.surtitre}}</span></div>
-                    <h2 class="heading heading--1">{{infos.meta.h2subtitle}}</h2>
+                    <div class="overheading"><span class="overheading__label">Avant-propos</span></div>
+                    <h2 class="heading heading--1">{{infos.meta.albumname}}</h2>
                     <p class="paragraph"
                         ng-bind-html="infos.content"></p>
                 </div>
@@ -70,13 +81,13 @@
                 <section class="filters">
                     <a href class="filters__item button" onclick="ga('send', 'event', 'filter', 'click', 'filter buttons', 'albumrankcat')"
                         ng-class="{'is-active': groupBy == 'meta.albumrankcat'}"
-                        ng-click="setFilter('albumrankcat', $event)">{{infos.meta.filtre_classement}}</a>
+                        ng-click="setFilter('albumrankcat', $event)">Trier par rang</a>
                     <a href class="filters__item button" onclick="ga('send', 'event', 'filter', 'click', 'filter buttons', 'albumyearcat')"
                         ng-class="{'is-active': groupBy == 'meta.albumyearcat'}"
-                        ng-click="setFilter('albumyearcat', $event)">{{infos.meta.filtre_date}}</a>
+                        ng-click="setFilter('albumyearcat', $event)">Trier par date</a>
                     <a href class="filters__item button" onclick="ga('send', 'event', 'filter', 'click', 'filter buttons', 'albumstylecat')"
                         ng-class="{'is-active': groupBy == 'meta.albumstylecat'}"
-                        ng-click="setFilter('albumstylecat', $event)">{{infos.meta.filtre_style}}</a>
+                        ng-click="setFilter('albumstylecat', $event)">Trier par style</a>
                 </section>
 
                 <section class="albums"
@@ -126,7 +137,7 @@
                 </section>
 
                 <footer class="footer"
-                    ng-include="config.incPath + 'footer.html'"></footer>
+                    ng-include="config.incPath + 'footer_'+ top100Id +'.html'"></footer>
 
             </div>
 
@@ -160,7 +171,13 @@
                         </div>
                     </div>
                     <div class="player__button">
+                        <!-- build:template
+                        <% if (env == 'dev') { %>
                         <a href="http://thebackpackerz.com/telecharger-la-mixtape-rewind-les-100-meilleurs-albums-de-rap-us-depuis-2000-by-the-backpackerz/" target="_blank" class="button" onclick="ga('send', 'event', 'download', 'click', 'player buttons')">Télécharger la mixtape</a>
+                        <% } else { %>
+                        <a href="<!--#echo encoding='none' var='ctaUrl' -->" target="_blank" class="button" onclick="ga('send', 'event', 'download', 'click', 'player buttons')"><!--#echo encoding='none' var='ctaLabel' --></a>
+                        <% } %>
+                        /build -->
                     </div>
                 </div>
             </section>

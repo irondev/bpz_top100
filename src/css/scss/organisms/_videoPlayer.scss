@@ -1,0 +1,41 @@
+.videoPlayer {
+
+    body[data-displayVideo='0'] & {
+        display:none;
+    }
+
+    &__player {
+        z-index:-1;
+        opacity:0;
+        position:fixed;
+        top:0;
+        left:0;
+        transition:all 0.5s;
+
+        body.is-playing & {
+            z-index:0;
+            opacity:1;
+        }
+    }
+
+    &__close {
+        opacity:0;
+        position: fixed;
+        top: 60px;
+        right: 20px;
+        font-size: 36px;
+        color: #FFF;
+        z-index: 100;
+        text-shadow: 1px 1px 1px $color-red;
+        text-decoration: none;
+        transition:all 0.25s;
+
+        .videoPlayer:hover & {
+            opacity:1;
+        }
+
+        &:hover {
+            color: $color-red;
+        }
+    }
+}

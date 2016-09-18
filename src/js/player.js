@@ -1,5 +1,6 @@
 var player,
-    playerTimer;
+    playerTimer,
+    displayVideo = parseInt(document.body.attributes['data-displayVideo'].value);
 
 var playerInit = function () {
 	var tag = document.createElement('script');
@@ -9,10 +10,20 @@ var playerInit = function () {
 };
 
 var onYouTubeIframeAPIReady = function () {
+    if (displayVideo) {
+        var playerWidth = documentWidth;
+        var playerHeight = documentHeight;
+    } else {
+        var playerWidth = 0;
+        var playerHeight = 0;
+    }
     player = new YT.Player('player', {
-        height: '0',
-        width: '0',
+        height: playerHeight,
+        width: playerWidth,
         loop: 0,
+        controls:0,
+        modestbranding:1,
+        showinfo:0,
         events: {
             'onReady': function(event) {
                 var $scope = angular.element(document.querySelector('[ng-controller="Top100Ctrl"]')).scope();

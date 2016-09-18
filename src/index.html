@@ -31,13 +31,11 @@
         <![endif]-->
         /build -->
     </head>
-    <body 
-        ng-class="{'is-ready': appReady, 'is-navigating': isNavigating}">
     <!-- build:template
     <body class="timeline"
-        ng-class="{'in-app': (inApp), 'is-ready': (appReady), 'is-navigating': isNavigating}"
-        <% if (env == 'dev') { %>data-top100Id="les-100-meilleurs-albums-de-rap-us-depuis-2000"
-        <% } else { %>data-top100Id="<!--#echo var='top100Id' -->"<% } %>>
+        ng-class="{'in-app': (inApp), 'is-ready': (appReady), 'is-navigating': isNavigating, 'is-playing': isPlaying}"
+        <% if (env == 'dev') { %>data-top100Id="les-100-meilleurs-albums-de-rap-us-depuis-2000" data-displayVideo="0"
+        <% } else { %>data-top100Id="<!--#echo var='top100Id' -->" data-displayVideo="<!--#echo var='displayVideo' -->"<% } %>>
     /build -->
 
         <nav class="nav"></nav>
@@ -141,10 +139,15 @@
 
             </div>
 
+            <div class="videoPlayer">
+                <div class="videoPlayer__player" id="player"></div>
+                <a href class="videoPlayer__close fa fa-close" onclick="ga('send', 'event', 'close', 'click', 'video buttons')"
+                    ng-click="pauseAlbumSample()"
+                    ng-show="isPlaying"></a>
+            </div>
             <section class="player"
                 ng-show="isPlayerReady"
                 ng-class="{'is-active': documentScroll > (documentHeight / 2) && loadedAlbum}">
-                <div id="player"></div>
                 <div class="player__wrapper">
                     <div class="player__infos" onclick="ga('send', 'event', 'trackinfos', 'click', 'player buttons')"
                         ng-style="{'visibility':loadedAlbum ? 'visible' : 'hidden'}"

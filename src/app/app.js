@@ -1,5 +1,6 @@
 var app;
 var documentHeight = document.documentElement.clientHeight;
+var documentWidth = document.documentElement.clientWidth;
 var documentScroll = window.pageYOffset;
 var top100Id = document.body.attributes['data-top100Id'].value;console.log("top100Id:", top100Id);
 
